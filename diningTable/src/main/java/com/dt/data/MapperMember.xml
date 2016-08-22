@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 회원 리스트 -->
+  	<select id="selectAll" resultType="memberVo">
+    	select * from member
+	</select>
+	<!-- 회원 상세 정보 -->
+	<select id="select" resultType="memberVo">
+		select * from member where mNo=#{mNo}
+	</select>
+	<!-- 회원 가입 -->
+	<insert id="insert" parameterType="memberVo">
+		insert into member values (seqMember.nextval, #{mEmail},#{mPwd},#{mType},#{mName},#{mPhone},#{mGender},#{mBirth})
+	</insert>
+	<!-- 회원 수정 -->
+	<update id="update" parameterType="memberVo">
+		update member set mEmail=#{mEmail}, mPwd=#{mPwd},mType=#{mType},mName=#{mName},mPhone=#{mPhone},mGender=#{mGender},mBirth=#{mBirth} where mNo=#{mNo}
+	</update>
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="memberVo">
+		delete member where mNo=#{mNo}
+	</delete>
+	<!-- 이메일 중복 체크 -->
+	<select id="emailCheck" resultType="int">
+		select count(*) from member where mEmail=#{mEmail}
+	</select>
+	<!-- 회원 로그인 -->
+	<select id="login" resultType="memberVo">
+		select * from member where mEmail=#{mEmail} and mPwd=#{mPwd}
+	</select>
+</mapper>
