@@ -75,4 +75,12 @@ public class MemberDao {
 		session.close();
 		return re;
 	}
+	
+	// 이메일 중복 체크
+	public int emailCheck(String mEmail){
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("member.emailCheck", mEmail);
+		session.close();
+		return re;
+	}
 }

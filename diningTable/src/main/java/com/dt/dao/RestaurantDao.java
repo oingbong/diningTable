@@ -74,4 +74,12 @@ public class RestaurantDao {
 		session.close();
 		return re;
 	}
+	
+	// 이메일 중복 체크
+	public int emailCheck(String tEmail){
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("restaurant.emailCheck", tEmail);
+		session.close();
+		return re;
+	}
 }

@@ -103,4 +103,15 @@ public class RestaurantController {
 		}
 		return view;
 	}
+	
+	// 이메일 중복 체크
+	@RequestMapping("/checkEmailRest.do")
+	public ModelAndView checkEmail(String tEmail){
+		ModelAndView view = new ModelAndView();
+		System.out.println("tEmail : " + tEmail);
+		int re = dao.emailCheck(tEmail);
+		System.out.println("re : " + re);
+		view.addObject("re", re);
+		return view;
+	}
 }
