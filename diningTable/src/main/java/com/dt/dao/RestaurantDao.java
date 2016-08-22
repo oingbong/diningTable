@@ -82,4 +82,17 @@ public class RestaurantDao {
 		session.close();
 		return re;
 	}
+	
+	// 레스토랑 로그인
+	public RestaurantVo login(String tEmail, String tPwd){
+		RestaurantVo t = null;
+		HashMap map  = new HashMap();
+		map.put("tEmail", tEmail);
+		map.put("tPwd", tPwd);
+		
+		SqlSession session = factory.openSession();
+		t = session.selectOne("restaurant.login", map);
+		session.close();
+		return t;
+	}
 }

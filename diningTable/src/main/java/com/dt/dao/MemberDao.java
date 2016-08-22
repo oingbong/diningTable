@@ -83,4 +83,17 @@ public class MemberDao {
 		session.close();
 		return re;
 	}
+	
+	// 회원 로그인
+	public MemberVo login(String mEmail, String mPwd){
+		MemberVo m = null;
+		HashMap map = new HashMap();
+		map.put("mEmail", mEmail);
+		map.put("mPwd", mPwd);
+		
+		SqlSession session = factory.openSession();
+		m = session.selectOne("member.login", map);
+		session.close();
+		return m;
+	}
 }
