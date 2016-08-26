@@ -11,7 +11,7 @@
 
 	listRestaurant Page
 	
-	<table border="1" width="80%">
+	<table border="1" width="100%">
 		<tr>
 			<td>레스토랑 번호</td>
 			<td>레스토랑 이메일</td>

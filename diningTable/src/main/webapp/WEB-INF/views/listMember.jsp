@@ -10,7 +10,7 @@
 <body>
 	listMember Page
 	
-	<table border="1" width="80%">
+	<table border="1" width="100%">
 		<tr>
 			<td>회원 번호</td>
 			<td>회원 이메일</td>

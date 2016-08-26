@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<properties resource="com/dt/data/db.properties" />
-	
 	<typeAliases>
 		<typeAlias type="com.dt.vo.MemberVo" alias="memberVo"/>
 		<typeAlias type="com.dt.vo.RestaurantVo" alias="restaurantVo"/>
