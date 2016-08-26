@@ -18,7 +18,8 @@
 	</insert>
 	<!-- 레스토랑 수정 -->
 	<update id="update" parameterType="restaurantVo">
-		update restaurant set tEmail=#{tEmail},tPwd=#{tPwd},tType=#{tType},tName=#{tName},tPhone=#{tPhone},tAddr=#{tAddr} where tNo=#{tNo}
+		update restaurant set tEmail=#{tEmail},tPwd=#{tPwd},tType=#{tType},tName=#{tName},tPhone=#{tPhone},tAddr=#{tAddr}
+		,tTimeS=#{tTimeS},tTimeC=#{tTimeC},tTimeBs=#{tTimeBs},tTimeBc=#{tTimeBc}, tHoliday=#{tHoliday}, tImage=#{tImage}, tMenu=#{tMenu} where tNo=#{tNo}
 	</update>
 	<!-- 레스토랑 삭제 -->
 	<delete id="delete" parameterType="restaurantVo">
