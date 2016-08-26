@@ -12,8 +12,12 @@
 	<a href="listRestaurant.do">listRestaurant</a>&nbsp;
 	<a href="main.do">main</a>&nbsp;
 	<c:choose>
-		<c:when test="${mNo != null || tNo != null}"><!-- 로그인 한 후, session 값 확인 -->
+		<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
 			<a href="detailMember.do">change information</a>&nbsp;
+			<a href="logout.do">logout</a>&nbsp;
+		</c:when>
+		<c:when test="${tNo != null}"><!-- 레스토랑 회원 경우 보이는 메뉴 -->
+			<a href="detailRestaurant.do">change informationR</a>&nbsp;
 			<a href="logout.do">logout</a>&nbsp;
 		</c:when>
 		<c:otherwise><!-- 로그인 하기 전 -->
