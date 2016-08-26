@@ -182,6 +182,7 @@
 		
 		전화번호 : <input type="hidden" name="tPhone" id="tPhone" value="">
 			<select name="p1" id="p1" onchange="phone()">
+				<option value="">선택하세요
 				<option value="02">02
 				<option value="032">032
 				<option value="042">042
@@ -195,6 +196,7 @@
 		
 		주소 : <input type="hidden" name="tAddr" id="tAddr" value="">
 			<select name="a1" id="a1" onchange="addr()">
+				<option value="">선택하세요
 				<option value="서울시">서울시
 				<option value="인천시">인천시
 				<option value="대전시">대전시
@@ -223,12 +225,14 @@
 		
 		휴무일 : <input type="hidden" name="tHoliday" id="tHoliday" value="">
 			<select name="h1" id="h1" onchange="holiday()">
+				<option value="">선택하세요
 				<option value="매주">매주
 				<option value="매월">매월
 				<option value="명절">명절
 				<option value="기타">기타
 			</select>
 			<select name="h2" id="h2" onchange="holiday()">
+				<option value="">선택하세요
 				<option value="일요일">일요일
 				<option value="월요일">월요일
 				<option value="화요일">화요일

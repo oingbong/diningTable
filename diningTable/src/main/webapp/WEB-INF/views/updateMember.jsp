@@ -84,7 +84,7 @@
 		<br>
 		
 		<input type="button" name="pChange" id="pChange" value="비밀번호 변경" onclick="pwdChange()">
-		<div class="pwd" style="display: none;" onclick="chchch">
+		<div class="pwd" style="display: none;">
 			비밀번호 : <input type="password" name="mPwd" id="mPwd" value="${m.mPwd }">
 			<br>
 			비밀번호확인 : <input type="password" name="mPwdCheck" id="mPwdCheck">
@@ -103,6 +103,7 @@
 		핸드폰 : <input type="hidden" name="mPhone" id="mPhone" value="${m.mPhone }">
 			<input type="hidden" name="phoneFirst" id="phoneFirst" value="${(m.mPhone).substring(0,3) }">
 			<select name="p1" id="p1" onchange="phone()">
+				<option value="">선택하세요
 				<option value="010">010
 				<option value="011">011
 				<option value="016">016

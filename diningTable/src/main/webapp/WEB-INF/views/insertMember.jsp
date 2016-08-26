@@ -100,6 +100,7 @@
 		
 		핸드폰 : <input type="hidden" name="mPhone" id="mPhone" value="">
 			<select name="p1" id="p1" onchange="phone()">
+				<option value="">선택하세요
 				<option value="010">010
 				<option value="011">011
 				<option value="016">016

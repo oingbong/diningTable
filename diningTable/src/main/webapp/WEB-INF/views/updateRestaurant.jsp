@@ -205,6 +205,7 @@
 		<!-- 수정시에 DB에 들어갈 값 --><input type="hidden" name="tAddr" id="tAddr" value="${t.tAddr }">
 		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="hidden" name="choicedAddr" id="choicedAddr" value="${t.tAddr }">
 			<select name="a1" id="a1" onchange="addr()">
+				<option value="">선택하세요
 				<option value="서울시">서울시
 				<option value="인천시">인천시
 				<option value="대전시">대전시
