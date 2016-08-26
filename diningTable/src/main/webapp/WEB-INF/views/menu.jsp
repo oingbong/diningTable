@@ -12,7 +12,7 @@
 	<a href="listRestaurant.do">listRestaurant</a>&nbsp;
 	<a href="main.do">main</a>&nbsp;
 	<c:choose>
-		<c:when test="${login==2 || login==3 }"><!-- 로그인 한 후 -->
+		<c:when test="${mNo != null || tNo != null}"><!-- 로그인 한 후, session 값 확인 -->
 			<a href="detailMember.do">change information</a>&nbsp;
 			<a href="logout.do">logout</a>&nbsp;
 		</c:when>
