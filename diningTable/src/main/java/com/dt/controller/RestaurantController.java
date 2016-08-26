@@ -1,5 +1,7 @@
 package com.dt.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +33,10 @@ public class RestaurantController {
 	
 	// 레스토랑 상세 정보
 	@RequestMapping("/detailRestaurant.do")
-	public ModelAndView detail(String tEmail){
+	public ModelAndView detail(HttpSession session){
 		ModelAndView view = new ModelAndView();
-		view.addObject("t", dao.detail(tEmail));
+		int getSessionTno = (Integer)session.getAttribute("tNo"); // session 값에 담긴 tNo
+		view.addObject("t", dao.detail(getSessionTno));
 		view.addObject("viewPage", "detailRestaurant.jsp");
 		view.setViewName("template");
 		return view;
@@ -41,9 +44,9 @@ public class RestaurantController {
 	
 	// 레스토랑 정보 삭제
 	@RequestMapping("/deleteRestaurant.do")
-	public ModelAndView delete(String tEmail){
+	public ModelAndView delete(int tNo){
 		ModelAndView view = new ModelAndView();
-		int re = dao.delete(tEmail);
+		int re = dao.delete(tNo);
 		if(re >=1){
 			view.setViewName("redirect:/listRestaurant.do");
 		}else{
@@ -80,9 +83,10 @@ public class RestaurantController {
 	
 	// 레스토랑 수정 폼
 	@RequestMapping(value="/updateRestaurant.do", method=RequestMethod.GET)
-	public ModelAndView updateForm(String tEmail){
+	public ModelAndView updateForm(HttpSession session){
 		ModelAndView view = new ModelAndView();
-		RestaurantVo t = dao.detail(tEmail);
+		int getSessionTno = (Integer)session.getAttribute("tNo");
+		RestaurantVo t = dao.detail(getSessionTno);
 		view.addObject("t", t);
 		view.addObject("viewPage", "updateRestaurant.jsp");
 		view.setViewName("template");

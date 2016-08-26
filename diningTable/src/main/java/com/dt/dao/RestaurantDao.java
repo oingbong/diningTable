@@ -41,9 +41,9 @@ public class RestaurantDao {
 	}
 	
 	// 레스토랑 상세 정보
-	public RestaurantVo detail(String tEmail){
+	public RestaurantVo detail(int tNo){
 		SqlSession session = factory.openSession();
-		RestaurantVo r = session.selectOne("restaurant.select", tEmail);
+		RestaurantVo r = session.selectOne("restaurant.select", tNo);
 		session.close();
 		return r;
 	}
@@ -67,9 +67,9 @@ public class RestaurantDao {
 	}
 	
 	// 레스토랑 정보 삭제
-	public int delete(String tEmail){
+	public int delete(int tNo){
 		SqlSession session = factory.openSession();
-		int re = session.delete("restaurant.delete", tEmail);
+		int re = session.delete("restaurant.delete", tNo);
 		session.commit();
 		session.close();
 		return re;

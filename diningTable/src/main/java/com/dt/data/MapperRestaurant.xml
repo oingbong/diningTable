@@ -9,7 +9,7 @@
 	</select>
 	<!-- 레스토랑 상세정보 -->
 	<select id="select" resultType="restaurantVo">
-		select * from restaurant where tEmail=#{tEmail}
+		select * from restaurant where tNo=#{tNo}
 	</select>
 	<!-- 레스토랑 가입 -->
 	<insert id="insert" parameterType="restaurantVo">
@@ -18,11 +18,11 @@
 	</insert>
 	<!-- 레스토랑 수정 -->
 	<update id="update" parameterType="restaurantVo">
-		update restaurant set tPwd=#{tPwd},tType=#{tType},tName=#{tName},tPhone=#{tPhone},tAddr=#{tAddr} where tEmail=#{tEmail}
+		update restaurant set tEmail=#{tEmail},tPwd=#{tPwd},tType=#{tType},tName=#{tName},tPhone=#{tPhone},tAddr=#{tAddr} where tNo=#{tNo}
 	</update>
 	<!-- 레스토랑 삭제 -->
 	<delete id="delete" parameterType="restaurantVo">
-		delete restaurant where tEmail=#{tEmail}
+		delete restaurant where tNo=#{tNo}
 	</delete>
 	<!-- 이메일 중복 체크 -->
 	<select id="emailCheck" resultType="int">
