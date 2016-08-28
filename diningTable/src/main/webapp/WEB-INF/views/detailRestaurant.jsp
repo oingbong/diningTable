@@ -11,8 +11,8 @@
 		<tr><td>레스토랑 이메일 : ${t.tEmail }</td></tr>
 		<tr><td>레스토랑 타입 : ${t.tType }</td></tr>
 		<tr><td>레스토랑 이름 : ${t.tName }</td></tr>
-		<tr><td>레스토랑 전화번호 : ${t.tPhone }</td></tr>
-		<tr><td>레스토랑 주소 : ${t.tAddr }</td></tr>
+		<tr><td>레스토랑 전화번호 : ${t.tPhoneF }-${t.tPhoneS }-${t.tPhoneT }</td></tr>
+		<tr><td>레스토랑 주소 : ${t.tAddrF } ${t.tAddrS } ${t.tAddrT } ${t.tAddrO }</td></tr>
 		<tr><td>레스토랑 오픈시간 : ${t.tTimeS }</td></tr>
 		<tr><td>레스토랑 마감시간 : ${t.tTimeC }</td></tr>
 		<tr><td>레스토랑 휴식시작시간 : ${t.tTimeBs }</td></tr>

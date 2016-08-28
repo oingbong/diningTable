@@ -68,17 +68,17 @@
   			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
   			|| $("#p1 option:selected").val()){
   			
-	  			var phone = $("#p1").val() + "-" + $("#p2").val() + "-" + $("#p3").val();
-				$("#tPhone").val(phone);
+	  			var phoneF = $("#p1").val();
+				$("#tPhoneF").val(phoneF);
   		}else{
   			return false;
   		}
 	}
   	
-  	// 레스토랑 주소 합치고 읽어오기
+  	// 레스토랑 첫번째 주소 읽어오기
   	function addr() {
-		var addr  = $("#a1").val() + $("#a2").val();
-		$("#tAddr").val(addr);
+		var addr  = $("#a1").val();
+		$("#tAddrF").val(addr);
 	}
   	
   	// 시간 관련과 관련된 select option 값 가져오기(DB 저장값을 위한 것)
@@ -103,7 +103,7 @@
 		if(h1=="기타"){ // 기타일때 추가적인 것 입력
 			$("#h2").hide();
 			$("#h3").show();
-			$("#tHoliday").val(h1 + h3);
+			$("#tHoliday").val(h1 + " " + h3);
 		}else if(h1=="명절"){ // 명절일때 '명절'만 입력
 			$("#h2").hide();
 			$("#h3").hide();
@@ -111,7 +111,7 @@
 		}else{ // 매주 혹은 매월 일때 '매주/매월'과 '요일' 입력
 			$("#h2").show();
 			$("#h3").hide();
-			$("#tHoliday").val(h1 + h2);
+			$("#tHoliday").val(h1 + " " + h2);
 		}
 	}
 </script>
@@ -180,7 +180,7 @@
 		레스토랑 명 : <input type="text" name="tName" id="tName" value="">
 		<br>
 		
-		전화번호 : <input type="hidden" name="tPhone" id="tPhone" value="">
+		전화번호 : <input type="hidden" name="tPhoneF" id="tPhoneF" value="">
 			<select name="p1" id="p1" onchange="phone()">
 				<option value="">선택하세요
 				<option value="02">02
@@ -190,11 +190,11 @@
 				<option value="053">053
 				<option value="064">064
 			</select>
-			-<input type="text" name="p2" id="p2" value="" onkeyup="phone()">
-			-<input type="text" name="p3" id="p3" value="" onkeyup="phone()">
+			-<input type="text" name="tPhoneS" id="tPhoneS" value="" >
+			-<input type="text" name="tPhoneT" id="tPhoneT" value="" >
 		<br>
 		
-		주소 : <input type="hidden" name="tAddr" id="tAddr" value="">
+		주소 : <input type="hidden" name="tAddrF" id="tAddrF" value="">
 			<select name="a1" id="a1" onchange="addr()">
 				<option value="">선택하세요
 				<option value="서울시">서울시
@@ -204,7 +204,9 @@
 				<option value="부산시">부산시
 				<option value="제주도">제주도
 			</select>
-			-<input type="text" name="a2" id="a2" value="" onkeyup="addr()">
+			&nbsp;<input type="text" name="tAddrS" id="tAddrS" value="" >
+			&nbsp;<input type="text" name="tAddrT" id="tAddrT" value="" >
+			&nbsp;<input type="text" name="tAddrO" id="tAddrO" value="" >
 		<br>
 		
 		오픈시간 : <input type="hidden" name="tTimeS" id="tTimeS" value="">

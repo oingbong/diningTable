@@ -22,20 +22,17 @@
 		});
 		
 		// 레스토랑 타입 선택값을 가져오기 위한 것
-		var choicedType = $("#choicedType").val();
+		var choicedType = $("#tType").val();
   		$("#type").val(choicedType).attr("selected", "selected");
 
   		
   		// 레스토랑 번호 선택값을 가져오기 위한 것
-  		var choicedPhone = $("#choicedPhone").val();
-  		if ((choicedPhone.substring(0,2))=="02") { 
-  			// 전화번호가 서울시인 경우
-	  		$("#p1").val(choicedPhone.substring(0,2)).attr("selected", "selected");
-		}else{
-			// 서울시를 제외한 나머지인 경우
-	  		$("#p1").val(choicedPhone.substring(0,3)).attr("selected", "selected");
-		}
+  		var choicedPhoneF = $("#tPhoneF").val();
+  		$("#p1").val(choicedPhoneF).attr("selected", "selected");
   		
+  		// 레스토랑 주소 선택값을 가져오기 위한 것
+  		var choicedAddrF = $("#tAddrF").val();
+  		$("#a1").val(choicedAddrF).attr("selected", "selected");
   		
   		// 시간과 관련된 select option 값 주기 위한 배열
   		var time = ["선택하세요","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30",
@@ -53,10 +50,10 @@
   		} 
   		
   		// 레스토랑 시간관련 선택값을 가져오기 위한 것
-		var choicedTimeS = $("#choicedTimeS").val();
-		var choicedTimeC = $("#choicedTimeC").val();
-		var choicedTimeBs = $("#choicedTimeBs").val();
-		var choicedTimeBc = $("#choicedTimeBc").val();
+		var choicedTimeS = $("#tTimeS").val();
+		var choicedTimeC = $("#tTimeC").val();
+		var choicedTimeBs = $("#tTimeBs").val();
+		var choicedTimeBc = $("#tTimeBc").val();
   		$("#s1").val(choicedTimeS).attr("selected", "selected");
   		$("#c1").val(choicedTimeC).attr("selected", "selected");
   		$("#bs1").val(choicedTimeBs).attr("selected", "selected");
@@ -64,11 +61,24 @@
   		
   		
   		// 레스토랑 휴무일 선택값을 가져오기 위한 것
-		var choicedHoliday = $("#choicedHoliday").val();
-  		var holiday1 = choicedHoliday.substring(0,2);
-  		var holiday2 = choicedHoliday.substring(2,5);
-  		$("#h1").val(holiday1).attr("selected", "selected");
-  		$("#h2").val(holiday2).attr("selected", "selected");
+		var choicedHoliday = $("#tHoliday").val();
+  		var holidayF = choicedHoliday.substring(0,2);
+  		var holidayS = choicedHoliday.substring(3);
+  		
+  		if(holidayF=="기타"){ // 기타일때 추가적인 것 보이기
+  			$("#h2").hide();
+			$("#h3").show();
+			$("#h3").val(holidayS);
+  		}else if(holidayF=="명절"){ // 명절일때 '명절'만 보이기
+  			$("#h2").hide();
+			$("#h3").hide();
+  		}else{ // 매주 혹은 매월 일때 '매주/매월'과 '요일' 보이기
+  			$("#h2").show();
+			$("#h3").hide();
+  		}
+
+  		$("#h1").val(holidayF).attr("selected", "selected");
+  		$("#h2").val(holidayS).attr("selected", "selected");
   		
 	})
 
@@ -84,8 +94,8 @@
 	
  	// 레스토랑 타입 읽어오기
  	function RestType() {
-		var aa = $("#type option:selected").val();
-		$("#tType").val(aa);
+		var t = $("#type option:selected").val();
+		$("#tType").val(t);
 	}
  	
  	
@@ -97,17 +107,17 @@
   			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
   			|| $("#p1 option:selected").val()){
   			
-	  			var phone = $("#p1").val() + "-" + $("#p2").val() + "-" + $("#p3").val();
-				$("#tPhone").val(phone);
+	  			var phoneF = $("#p1").val();
+				$("#tPhoneF").val(phoneF);
   		}else{
   			return false;
   		}
 	}
  	
-  	// 레스토랑 주소 합치고 읽어오기
+  	// 레스토랑 주소 읽어오기
   	function addr() {
-		var addr  = $("#a1").val() + $("#a2").val();
-		$("#tAddr").val(addr);
+		var addr  = $("#a1").val();
+		$("#tAddrF").val(addr);
 	}
 	
   	// 시간 관련과 관련된 select option 값 가져오기(DB 저장값을 위한 것)
@@ -132,7 +142,7 @@
 		if(h1=="기타"){ // 기타일때 추가적인 것 입력
 			$("#h2").hide();
 			$("#h3").show();
-			$("#tHoliday").val(h1 + h3);
+			$("#tHoliday").val(h1 + " " + h3);
 		}else if(h1=="명절"){ // 명절일때 '명절'만 입력
 			$("#h2").hide();
 			$("#h3").hide();
@@ -140,14 +150,14 @@
 		}else{ // 매주 혹은 매월 일때 '매주/매월'과 '요일' 입력
 			$("#h2").show();
 			$("#h3").hide();
-			$("#tHoliday").val(h1 + h2);
+			$("#tHoliday").val(h1 + " " + h2);
 		}
 	}
  	
 </script>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="updateRestaurant.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="tNo" id="tNo" value="${t.tNo }">
 
 		<input type="hidden" name="tEmail" id="tEmail" value="${t.tEmail }">
@@ -165,7 +175,6 @@
 		<br>
 		
 		레스토랑 타입 :<input type="hidden" name="tType" id="tType" value="${t.tType }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="hidden" name="choicedType" id="choicedType" value="${t.tType }">
 			<select name="type" id="type" onchange="RestType()">
 				<option value="">선택하세요
 				<option value="Korean">Korean
@@ -186,8 +195,7 @@
 		<br>
 
 		레스토랑 전화번호 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="hidden" name="tPhone" id="tPhone" value="${t.tPhone }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="hidden" name="choicedPhone" id="choicedPhone" value="${t.tPhone }">
+		<input type="hidden" name="tPhoneF" id="tPhoneF" value="${t.tPhoneF }">
 			<select name="p1" id="p1" onchange="phone()">
 				<option value="">선택하세요
 				<option value="02">02
@@ -197,13 +205,12 @@
 				<option value="053">053
 				<option value="064">064
 			</select>
-			-<input type="text" name="p2" id="p2" value="${(t.tPhone).substring(4,8) }" onkeyup="phone()">
-			-<input type="text" name="p3" id="p3" value="${(t.tPhone).substring(9,13) }" onkeyup="phone()">
+			-<input type="text" name="tPhoneS" id="tPhoneS" value="${t.tPhoneS }">
+			-<input type="text" name="tPhoneT" id="tPhoneT" value="${t.tPhoneT }">
 		<br>
 		
 		레스토랑 주소 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="hidden" name="tAddr" id="tAddr" value="${t.tAddr }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="hidden" name="choicedAddr" id="choicedAddr" value="${t.tAddr }">
+		<input type="hidden" name="tAddrF" id="tAddrF" value="${t.tAddrF }">
 			<select name="a1" id="a1" onchange="addr()">
 				<option value="">선택하세요
 				<option value="서울시">서울시
@@ -213,36 +220,33 @@
 				<option value="부산시">부산시
 				<option value="제주도">제주도
 			</select>
-			-<input type="text" name="a2" id="a2" value="${(t.tAddr).substring(4) }" onkeyup="addr()">
+			-<input type="text" name="tAddrS" id="tAddrS" value="${t.tAddrS }">
+			-<input type="text" name="tAddrT" id="tAddrT" value="${t.tAddrT }">
+			-<input type="text" name="tAddrO" id="tAddrO" value="${t.tAddrO }">
 		<br>
 		
 		오픈시간 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="text" name="tTimeS" id="tTimeS" value="${t.tTimeS }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="text" name="choicedTimeS" id="choicedTimeS" value="${t.tTimeS }">
+		<input type="hidden" name="tTimeS" id="tTimeS" value="${t.tTimeS }">
 			<select name="s1" id="s1" onchange="timeSet()"></select>
 		<br>
 		
 		마감시간 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="text" name="tTimeC" id="tTimeC" value="${t.tTimeC }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="text" name="choicedTimeC" id="choicedTimeC" value="${t.tTimeC }">
+		<input type="hidden" name="tTimeC" id="tTimeC" value="${t.tTimeC }">
 			<select name="c1" id="c1" onchange="timeSet()"></select>
 		<br>
 		
 		휴무시간시작 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="text" name="tTimeBs" id="tTimeBs" value="${t.tTimeBs }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="text" name="choicedTimeBs" id="choicedTimeBs" value="${t.tTimeBs }">
+		<input type="hidden" name="tTimeBs" id="tTimeBs" value="${t.tTimeBs }">
 			<select name="bs1" id="bs1" onchange="timeSet()"></select>
 		<br>
 		
 		휴무시간끝 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="text" name="tTimeBc" id="tTimeBc" value="${t.tTimeBc }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="text" name="choicedTimeBc" id="choicedTimeBc" value="${t.tTimeBc }">
+		<input type="hidden" name="tTimeBc" id="tTimeBc" value="${t.tTimeBc }">
 			<select name="bc1" id="bc1" onchange="timeSet()"></select>
 		<br>
 		
 		휴무일 : 
-		<!-- 수정시에 DB에 들어갈 값 --><input type="text" name="tHoliday" id="tHoliday" value="${t.tHoliday }">
-		<!-- 기존 선택된 값 가져오기 위한 것 --><input type="text" name="choicedHoliday" id="choicedHoliday" value="${t.tHoliday }">
+		<input type="hidden" name="tHoliday" id="tHoliday" value="${t.tHoliday }">
 			<select name="h1" id="h1" onchange="holiday()">
 				<option value="">선택하세요
 				<option value="매주">매주

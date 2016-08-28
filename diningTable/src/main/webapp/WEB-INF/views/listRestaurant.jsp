@@ -35,8 +35,8 @@
 				<td>${t.tPwd }</td>
 				<td>${t.tType }</td>
 				<td>${t.tName }</td>
-				<td>${t.tPhone }</td>
-				<td>${t.tAddr }</td>
+				<td>${t.tPhoneF }-${t.tPhoneS }-${t.tPhoneT }</td>
+				<td>${t.tAddrF } ${t.tAddrS } ${t.tAddrT } ${t.tAddrO }</td>
 				<td>${t.tTimeS }</td>
 				<td>${t.tTimeC }</td>
 				<td>${t.tTimeBs }</td>

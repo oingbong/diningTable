@@ -13,13 +13,17 @@
 	</select>
 	<!-- 레스토랑 가입 -->
 	<insert id="insert" parameterType="restaurantVo">
-		insert into restaurant values (seqRestaurant.nextval, #{tEmail},#{tPwd},#{tType},#{tName},#{tPhone},#{tAddr}
+		insert into restaurant values (seqRestaurant.nextval, #{tEmail},#{tPwd},#{tType},#{tName},#{tPhoneF},#{tPhoneS},#{tPhoneT}
+		,#{tAddrF},#{tAddrS},#{tAddrT},#{tAddrO}
 		,#{tTimeS},#{tTimeC},#{tTimeBs},#{tTimeBc},#{tHoliday},#{tImage},#{tMenu})
 	</insert>
 	<!-- 레스토랑 수정 -->
 	<update id="update" parameterType="restaurantVo">
-		update restaurant set tEmail=#{tEmail},tPwd=#{tPwd},tType=#{tType},tName=#{tName},tPhone=#{tPhone},tAddr=#{tAddr}
-		,tTimeS=#{tTimeS},tTimeC=#{tTimeC},tTimeBs=#{tTimeBs},tTimeBc=#{tTimeBc}, tHoliday=#{tHoliday}, tImage=#{tImage}, tMenu=#{tMenu} where tNo=#{tNo}
+		update restaurant set tEmail=#{tEmail},tPwd=#{tPwd},tType=#{tType},tName=#{tName}
+		,tPhoneF=#{tPhoneF},tPhoneS=#{tPhoneS},tPhoneT=#{tPhoneT}
+		,tAddrF=#{tAddrF},tAddrS=#{tAddrS},tAddrT=#{tAddrT},tAddrO=#{tAddrO}
+		,tTimeS=#{tTimeS},tTimeC=#{tTimeC},tTimeBs=#{tTimeBs},tTimeBc=#{tTimeBc}, tHoliday=#{tHoliday}, tImage=#{tImage}, tMenu=#{tMenu}
+		 where tNo=#{tNo}
 	</update>
 	<!-- 레스토랑 삭제 -->
 	<delete id="delete" parameterType="restaurantVo">
