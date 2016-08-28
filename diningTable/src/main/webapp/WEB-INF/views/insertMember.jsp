@@ -45,8 +45,8 @@
   			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
   			|| $("#p1 option:selected").val()){
   			
-	  			var phone = $("#p1").val() + "-" + $("#p2").val() + "-" + $("#p3").val();
-				$("#mPhone").val(phone);
+	  			var phoneF = $("#p1").val();
+				$("#mPhoneF").val(phoneF);
   		}else{
   			return false;
   		}
@@ -98,7 +98,8 @@
 		
 		이름 : <input type="text" name="mName" id="mName" value=""><br>
 		
-		핸드폰 : <input type="hidden" name="mPhone" id="mPhone" value="">
+		핸드폰 : 
+			<input type="hidden" name="mPhoneF" id="mPhoneF" value=""> 
 			<select name="p1" id="p1" onchange="phone()">
 				<option value="">선택하세요
 				<option value="010">010
@@ -107,8 +108,8 @@
 				<option value="017">017
 				<option value="019">019
 			</select>
-			-<input type="text" name="p2" id="p2" value="" onkeyup="phone()">
-			-<input type="text" name="p3" id="p3" value="" onkeyup="phone()">
+			-<input type="text" name="mPhoneS" id="mPhoneS" value="">
+			-<input type="text" name="mPhoneT" id="mPhoneT" value="">
 		<br>
 		
 		성별 : <input type="radio" name="mGender" value="남">남

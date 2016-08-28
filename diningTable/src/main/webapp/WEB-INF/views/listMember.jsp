@@ -28,7 +28,7 @@
 				<td>${m.mPwd }</td>
 				<td>${m.mType }</td>
 				<td>${m.mName }</td>
-				<td>${m.mPhone }</td>
+				<td>${m.mPhoneF }-${m.mPhoneS }-${m.mPhoneT }</td>
 				<td>${m.mGender }</td>
 				<td>${m.mBirth }</td>
 			</tr>

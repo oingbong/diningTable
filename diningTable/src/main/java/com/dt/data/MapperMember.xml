@@ -13,11 +13,11 @@
 	</select>
 	<!-- 회원 가입 -->
 	<insert id="insert" parameterType="memberVo">
-		insert into member values (seqMember.nextval, #{mEmail},#{mPwd},#{mType},#{mName},#{mPhone},#{mGender},#{mBirth})
+		insert into member values (seqMember.nextval, #{mEmail},#{mPwd},#{mType},#{mName},#{mPhoneF},#{mPhoneS},#{mPhoneT},#{mGender},#{mBirth})
 	</insert>
 	<!-- 회원 수정 -->
 	<update id="update" parameterType="memberVo">
-		update member set mEmail=#{mEmail}, mPwd=#{mPwd},mType=#{mType},mName=#{mName},mPhone=#{mPhone},mGender=#{mGender},mBirth=#{mBirth} where mNo=#{mNo}
+		update member set mEmail=#{mEmail}, mPwd=#{mPwd},mType=#{mType},mName=#{mName},mPhoneF=#{mPhoneF},mPhoneS=#{mPhoneS},mPhoneT=#{mPhoneT},mGender=#{mGender},mBirth=#{mBirth} where mNo=#{mNo}
 	</update>
 	<!-- 회원 삭제 -->
 	<delete id="delete" parameterType="memberVo">

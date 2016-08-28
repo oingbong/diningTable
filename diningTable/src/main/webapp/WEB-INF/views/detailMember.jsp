@@ -11,7 +11,7 @@
 		<tr><td>이메일 : ${m.mEmail }</td></tr>
 		<tr><td>타입 : ${m.mType }</td></tr>
 		<tr><td>이름 : ${m.mName }</td></tr>
-		<tr><td>핸드폰 : ${m.mPhone }</td></tr>
+		<tr><td>핸드폰 : ${m.mPhoneF }-${m.mPhoneS }-${m.mPhoneT }</td></tr>
 		<tr><td>성별 : ${m.mGender }</td></tr>
 		<tr><td>생일 : ${m.mBirth }</td></tr>
 		<tr><td><a href="updateMember.do">회원정보수정</a></td></tr>

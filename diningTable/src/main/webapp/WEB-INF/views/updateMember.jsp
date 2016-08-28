@@ -11,8 +11,8 @@
 	$(document).ready(function(){
 		
 		// 핸드폰 앞자리 선택값을 가져오기 위한 것
-		var phoneFirst = $("#phoneFirst").val();
-  		$("#p1").val(phoneFirst).attr("selected", "selected");
+		var phoneFirst = $("#mPhoneF").val();
+  		$("#p1").val(phoneFirst).attr("selected", "selected"); 
 	
 		// 생일 선택값을 가져오기 위한 것
 		var m1 = $("#m1").val();
@@ -52,14 +52,13 @@
 
 	function phone() {
   		event = event || window.event;
-  		//var tt = ${(m.mPhone).substring(0,3)}
   		var keyID = (event.which) ? event.which : event.keyCode;
   		if((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) 
   			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
   			|| $("#p1 option:selected").val()){
   			
-	  			var phone = $("#p1").val() + "-" + $("#p2").val() + "-" + $("#p3").val();
-				$("#mPhone").val(phone);
+	  			var phoneF = $("#p1").val();
+				$("#mPhoneF").val(phoneF);
   		}else{
   			return false;
   		}
@@ -100,8 +99,7 @@
 		이름 : <input type="text" name="mName" id="mName" value="${m.mName }">
 		<br>
 		
-		핸드폰 : <input type="hidden" name="mPhone" id="mPhone" value="${m.mPhone }">
-			<input type="hidden" name="phoneFirst" id="phoneFirst" value="${(m.mPhone).substring(0,3) }">
+		핸드폰 : <input type="hidden" name="mPhoneF" id="mPhoneF" value="${m.mPhoneF }">
 			<select name="p1" id="p1" onchange="phone()">
 				<option value="">선택하세요
 				<option value="010">010
@@ -110,8 +108,8 @@
 				<option value="017">017
 				<option value="019">019
 			</select>
-			-<input type="text" name="p2" id="p2" value="${(m.mPhone).substring(4,8) }" onkeyup="phone()">
-			-<input type="text" name="p3" id="p3" value="${(m.mPhone).substring(9,13) }" onkeyup="phone()">
+			-<input type="text" name="mPhoneS" id="mPhoneS" value="${m.mPhoneS }">
+			-<input type="text" name="mPhoneT" id="mPhoneT" value="${m.mPhoneT }">
 		<br>
 		
 		<input type="hidden" name="genderSelected" id="genderSelected" value="${m.mGender }">
