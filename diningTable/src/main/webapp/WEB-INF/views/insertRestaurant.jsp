@@ -139,7 +139,7 @@
 			9-1. 메뉴 이미지 삽입 x
 	 -->
 	insert Restaurant Page
-	<form action="insertRestaurant.do" method="post">
+	<form action="insertRestaurant.do" method="post" enctype="multipart/form-data">
 	
 		이메일 : <input type="hidden" name="tEmail" id="tEmail" value="">
 				<input type="text" name="e1" id="e1" value="" onchange="email()">
@@ -244,7 +244,7 @@
 			<input type="text" name="h3" id="h3" onchange="holiday()" style="display: none;">
 		<br>
 		
-		레스토랑 이미지 : <input type="text" name="tImage" id="tImage" value="">
+		레스토랑 이미지 : <input type="file" name="uploadFile" id="uploadFile" value="">
 		<br>
 		
 		레스토랑 메뉴 : <input type="text" name="tMenu" id="tMenu" value="">

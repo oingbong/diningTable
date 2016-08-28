@@ -42,7 +42,7 @@
 				<td>${t.tTimeBs }</td>
 				<td>${t.tTimeBc }</td>
 				<td>${t.tHoliday }</td>
-				<td>${t.tImage }</td>
+				<td><img src="resources/upload/${t.tImage }" width="50" height="50"> </td>
 				<td>${t.tMenu }</td>
 			</tr>
 		</c:forEach>

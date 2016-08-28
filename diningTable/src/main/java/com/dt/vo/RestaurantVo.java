@@ -1,5 +1,7 @@
 package com.dt.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class RestaurantVo {
 	
 	private int tNo;
@@ -17,6 +19,37 @@ public class RestaurantVo {
 	private String tImage;
 	private String tMenu;
 	
+	private MultipartFile uploadFile;
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	public RestaurantVo(int tNo, String tEmail, String tPwd, String tType, String tName, String tPhone, String tAddr,
+			String tTimeS, String tTimeC, String tTimeBs, String tTimeBc, String tHoliday, String tImage, String tMenu,
+			MultipartFile uploadFile) {
+		super();
+		this.tNo = tNo;
+		this.tEmail = tEmail;
+		this.tPwd = tPwd;
+		this.tType = tType;
+		this.tName = tName;
+		this.tPhone = tPhone;
+		this.tAddr = tAddr;
+		this.tTimeS = tTimeS;
+		this.tTimeC = tTimeC;
+		this.tTimeBs = tTimeBs;
+		this.tTimeBc = tTimeBc;
+		this.tHoliday = tHoliday;
+		this.tImage = tImage;
+		this.tMenu = tMenu;
+		this.uploadFile = uploadFile;
+	}
+
 	public RestaurantVo(int tNo, String tEmail, String tPwd, String tType, String tName, String tPhone, String tAddr,
 			String tTimeS, String tTimeC, String tTimeBs, String tTimeBc, String tHoliday, String tImage,
 			String tMenu) {

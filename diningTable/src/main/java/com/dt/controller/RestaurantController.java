@@ -1,11 +1,15 @@
 package com.dt.controller;
 
+import java.io.FileOutputStream;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dt.dao.RestaurantDao;
@@ -68,9 +72,32 @@ public class RestaurantController {
 	
 	// 레스토랑 추가 처리
 	@RequestMapping(value="/insertRestaurant.do", method=RequestMethod.POST)
-	public ModelAndView insert(RestaurantVo m){
+	public ModelAndView insert(RestaurantVo t, HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
-		int re = dao.insert(m);
+		
+		// 업로드 할 파일복사 처리
+		String path = request.getRealPath("/resources/upload");
+		System.out.println("path : " + path);
+		
+		// 사용자가 업로드 한 파일이 있는지 파악
+		MultipartFile uploadFile = t.getUploadFile();
+		if(uploadFile != null){
+			String fileName = uploadFile.getOriginalFilename();
+			t.settImage(fileName);
+			try {
+				// 사용자가 업로드 한 파일의 내용을 byte[]에 담아줌
+				byte []data = uploadFile.getBytes();
+				// 출력하기 위한 파일 객체 생성
+				FileOutputStream output = new FileOutputStream(path + "/" + fileName);
+				output.write(data);
+				output.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("fileUpload error : " + e);
+			}
+		}
+		
+		int re = dao.insert(t);
 		if(re>=1){
 			view.setViewName("redirect:/main.do");
 		}else{
