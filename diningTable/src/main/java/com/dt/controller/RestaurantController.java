@@ -1,5 +1,7 @@
 package com.dt.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +79,6 @@ public class RestaurantController {
 		
 		// 업로드 할 파일복사 처리
 		String path = request.getRealPath("/resources/upload");
-		System.out.println("path : " + path);
 		
 		// 사용자가 업로드 한 파일이 있는지 파악
 		MultipartFile uploadFile = t.getUploadFile();
@@ -88,9 +89,9 @@ public class RestaurantController {
 				// 사용자가 업로드 한 파일의 내용을 byte[]에 담아줌
 				byte []data = uploadFile.getBytes();
 				// 출력하기 위한 파일 객체 생성
-				FileOutputStream output = new FileOutputStream(path + "/" + fileName);
-				output.write(data);
-				output.close();
+				FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+				fos.write(data);
+				fos.close();
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println("fileUpload error : " + e);
@@ -122,12 +123,45 @@ public class RestaurantController {
 	
 	// 레스토랑 수정 처리
 	@RequestMapping(value="/updateRestaurant.do", method=RequestMethod.POST)
-	public ModelAndView update(RestaurantVo t){
+	public ModelAndView update(RestaurantVo t, HttpServletRequest request){
+		
+		String path = request.getRealPath("/resources/upload");		
+		MultipartFile uploadfile = t.getUploadFile();
+		
+		String newFname = uploadfile.getOriginalFilename(); // 새로운 파일
+		String oldFname = dao.detail(t.gettNo()).gettImage(); // 기존 파일
+		
+
+		// 수정 할 첨부파일이 존재하면 실행
+		if(newFname != null && !newFname.equals("")){
+			t.settImage(newFname); // image 칼럼에 새로운 파일명을 담아줌
+
+			// 새로운 파일 업로드
+			try {
+				byte []data = uploadfile.getBytes();
+				FileOutputStream fos = new FileOutputStream(path + "/" + newFname);
+				fos.write(data);
+				fos.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 		ModelAndView view = new ModelAndView();
+
 		int re = dao.update(t);
 		if(re >=1){
+			if(newFname != null && !newFname.equals("") && oldFname != null && !oldFname.equals("")){
+				File file = new File(path + "/" + oldFname); // 기존 파일 삭제를 위한 것
+				file.delete(); // 기존 파일 삭제
+			}
 			view.setViewName("redirect:/listRestaurant.do");
 		}else{
+			if(newFname != null && !newFname.equals("")){
+				File file = new File(path + "/" + newFname); // 새로운 파일 삭제 위한 것
+				file.delete(); // 새로운 파일 삭제
+			}
 			view.addObject("msg", "레스토랑 정보 수정 실패");
 			view.addObject("viewPage", "error.jsp");
 			view.setViewName("template");

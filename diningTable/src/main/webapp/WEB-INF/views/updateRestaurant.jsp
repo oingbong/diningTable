@@ -269,6 +269,7 @@
 		
 		레스토랑 이미지 :
 		<input type="text" name="tImage" id="tImage" value="${t.tImage }">
+		<input type="file" name="uploadFile" id="uploadFile" value="">
 		<br>
 		
 		레스토랑 메뉴 :
