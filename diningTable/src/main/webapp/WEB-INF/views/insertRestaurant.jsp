@@ -114,6 +114,19 @@
 			$("#tHoliday").val(h1 + " " + h2);
 		}
 	}
+  	
+  	// 비밀번호 일치 판단 후 사용자에게 보여주기
+  	function pwd() {
+		var pwd = $("#tPwd").val();
+		var pwdCheck = $("#tPwdCheck").val();
+		if(pwd==pwdCheck){
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='blue'>" + "비밀번호가 일치합니다." + "</font>")
+		}else{
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='red'>" + "비밀번호가 일치하지 않습니다." + "</font>")
+		}
+	}
 </script>
 </head>
 <body>
@@ -154,11 +167,12 @@
 			<input type="button" name="eCheck" id="eCheck" value="중복 확인">
 		<br>
 		
-		비밀번호 : <input type="password" name="tPwd" id="tPwd" value="">
+		비밀번호 : <input type="password" name="tPwd" id="tPwd" value="" onkeyup="pwd()">
+		<br>
+		비밀번호확인 :  <input type="password" name="tPwdCheck" id="tPwdCheck" value="" onkeyup="pwd()">
 		<br>
 		
-		비밀번호확인 :  <input type="password" name="tPwdCheck" id="tPwdCheck" value="">
-		<br>
+		<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
 		
 		레스토랑 타입 : <input type="hidden" name="tType" id="tType" value="">
 			<select name="type" id="type" onchange="RestType()">

@@ -154,6 +154,19 @@
 		}
 	}
  	
+ 	// 비밀번호 일치 판단 후 사용자에게 보여주기
+  	function pwd() {
+		var pwd = $("#tPwd").val();
+		var pwdCheck = $("#tPwdCheck").val();
+		if(pwd==pwdCheck){
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='blue'>" + "비밀번호가 일치합니다." + "</font>")
+		}else{
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='red'>" + "비밀번호가 일치하지 않습니다." + "</font>")
+		}
+	}
+ 	
 </script>
 </head>
 <body>
@@ -166,10 +179,13 @@
 
 		<input type="button" name="pChange" id="pChange" value="비밀번호 변경" onclick="pwdChange()">
 		<div class="pwd" style="display: none;">
-			비밀번호 : <input type="password" name="tPwd" id="tPwd" value="${t.tPwd }">
+			비밀번호 : <input type="password" name="tPwd" id="tPwd" value="${t.tPwd }" onkeyup="pwd()">
 			<br>
-			비밀번호확인 : <input type="password" name="tPwdCheck" id="tPwdCheck">
+			비밀번호확인 : <input type="password" name="tPwdCheck" id="tPwdCheck" onkeyup="pwd()">
 			<br>
+			
+			<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
+			
 			<input type="button" name="pCancel" id="pCancel" value="변경 취소" onclick="pwdCancel()">
 		</div>
 		<br>

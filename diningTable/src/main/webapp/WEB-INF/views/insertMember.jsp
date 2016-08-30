@@ -59,6 +59,19 @@
 		var birth = b1 + "-" + b2 + "-" + b3;
 		$("#mBirth").val(birth);
 	}
+	
+	// 비밀번호 일치 판단 후 사용자에게 보여주기
+	function pwd() {
+		var pwd = $("#mPwd").val();
+		var pwdCheck = $("#mPwdCheck").val();
+		if(pwd==pwdCheck){
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='blue'>" + "비밀번호가 일치합니다." + "</font>")
+		}else{
+			$("#pwdCheck *").remove();
+			$("#pwdCheck").append("<font color='red'>" + "비밀번호가 일치하지 않습니다." + "</font>")
+		}
+	}
 </script>
 </head>
 <body>
@@ -91,10 +104,14 @@
 		<input type="button" name="eCheck" id="eCheck" value="중복 확인">
 		<br>
 		
-		비밀번호 : <input type="password" name="mPwd" id="mPwd" value=""><br>
-		비밀번호확인 : <input type="password" name="mPwdCheck" id="mPwdCheck" value=""><br>
+		비밀번호 : <input type="password" name="mPwd" id="mPwd" value="" onkeyup="pwd()">
+		<br>
+		비밀번호확인 : <input type="password" name="mPwdCheck" id="mPwdCheck" value="" onkeyup="pwd()">
+		<br>
+
+		<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
 		
-		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원"><br>
+		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
 		
 		이름 : <input type="text" name="mName" id="mName" value=""><br>
 		
