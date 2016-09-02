@@ -10,6 +10,7 @@
 <style type="text/css">
 	#list:hover{
 		background-color: lime;
+		cursor: pointer;
 	}
 </style>
 
@@ -30,7 +31,7 @@
 			<td>레스토랑번호</td>
 		</tr>
 		<c:forEach var="r" items="${list }">
-			<tr id="list" style="cursor: pointer;" onclick="detail(${r.rNo})">
+			<tr id="list" onclick="detail(${r.rNo})">
 				<td>${r.rNo }</td>
 				<td><fmt:formatDate value="${r.rDate }" pattern="yyyy-MM-dd"/></td><!-- 날짜 형식 변환 jstl 이용 -->
 				<td>${r.rTime }</td>
