@@ -14,6 +14,7 @@
 	<a href="main.do">main</a>&nbsp;
 	<c:choose>
 		<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
+			<a href="listReservation.do">예약 정보 확인</a>&nbsp;
 			<a href="detailMember.do">change information</a>&nbsp;
 			<a href="logout.do">logout</a>&nbsp;
 		</c:when>

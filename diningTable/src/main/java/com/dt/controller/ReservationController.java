@@ -35,7 +35,18 @@ public class ReservationController {
 	public void setDaoT(RestaurantDao daoT) {
 		this.daoT = daoT;
 	}
-
+	
+	// 개인회원 예약 리스트
+	@RequestMapping("/listReservation.do")
+	public ModelAndView list(HttpSession session){
+		ModelAndView view = new ModelAndView();
+		int getSessionMno = (Integer)session.getAttribute("mNo");
+		view.addObject("list", daoR.list(getSessionMno));
+		view.addObject("viewPage", "listReservation.jsp");
+		view.setViewName("template");
+		return view;
+	}
+	
 	// 예약 하기 폼
 	@RequestMapping(value="/insertReservation.do", method=RequestMethod.GET)
 	public ModelAndView insertForm(HttpSession session, int tNo){

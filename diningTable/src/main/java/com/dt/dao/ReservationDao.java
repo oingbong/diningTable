@@ -1,6 +1,7 @@
 package com.dt.dao;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,6 +27,14 @@ public class ReservationDao {
 			// TODO: handle exception
 			System.out.println("ReservationDao Error : " + e);
 		}
+	}
+	
+	// 예약 리스트
+	public List<ReservationVo> list(int mNo){
+		SqlSession session = factory.openSession();
+		List<ReservationVo> list = session.selectList("reservation.selectM", mNo);
+		session.close();
+		return list;
 	}
 	
 	// 예약 하기
