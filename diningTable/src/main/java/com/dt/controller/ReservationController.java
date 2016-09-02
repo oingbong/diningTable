@@ -47,6 +47,16 @@ public class ReservationController {
 		return view;
 	}
 	
+	// 예약 상세 정보
+	@RequestMapping("/detailReservation.do")
+	public ModelAndView detail(int rNo){
+		ModelAndView view = new ModelAndView();
+		view.addObject("r", daoR.detail(rNo));
+		view.addObject("viewPage", "detailReservation.jsp");
+		view.setViewName("template");
+		return view;
+	}
+	
 	// 예약 하기 폼
 	@RequestMapping(value="/insertReservation.do", method=RequestMethod.GET)
 	public ModelAndView insertForm(HttpSession session, int tNo){

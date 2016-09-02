@@ -7,6 +7,10 @@
 	<select id="selectM" resultType="reservationVo">
 		select * from reservation where mNo=#{mNo}
 	</select>
+	<!-- 예약 상세 정보 -->
+	<select id="select" resultType="reservationVo">
+		select * from reservation where rNo=#{rNo}
+	</select>
 	<!-- 예약 하기 -->
 	<insert id="insert" parameterType="reservationVo">
 		insert into reservation values (seqReservation.nextval, #{rDate},#{rTime},#{rNumber},#{rRequest},#{mNo},#{tNo})
