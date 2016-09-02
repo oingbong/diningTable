@@ -58,7 +58,7 @@ public class MainController {
 	}
 	
 	// 회원 로그인 처리
-	@RequestMapping(value="/login.do", method=RequestMethod.POST)
+	@RequestMapping(value="/loginMember.do", method=RequestMethod.POST)
 	public ModelAndView login(String mEmail, String mPwd, HttpSession session){
 		ModelAndView view = new ModelAndView();
 		MemberVo m = dao.login(mEmail, mPwd);
@@ -76,7 +76,7 @@ public class MainController {
 	}
 	
 	// 레스토랑 로그인 처리
-	@RequestMapping(value="/loginRest.do", method=RequestMethod.POST)
+	@RequestMapping(value="/loginCoMember.do", method=RequestMethod.POST)
 	public ModelAndView loginRest(String tEmail, String tPwd, HttpSession session){
 		ModelAndView view = new ModelAndView();
 		RestaurantVo t = daoRest.login(tEmail, tPwd);

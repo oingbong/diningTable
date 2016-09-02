@@ -170,7 +170,7 @@
 </script>
 </head>
 <body>
-	<form action="updateRestaurant.do" method="post" enctype="multipart/form-data">
+	<form action="updateCoMember.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="tNo" id="tNo" value="${t.tNo }">
 
 		<input type="hidden" name="tEmail" id="tEmail" value="${t.tEmail }">

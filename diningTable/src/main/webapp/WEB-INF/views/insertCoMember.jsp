@@ -37,7 +37,7 @@
 		// 이메일 중복 체크
 		$("#eCheck").click(function(){ 
 			var tEmail = $("#tEmail").val();
-			$.getJSON("checkEmailRest.do",{tEmail:tEmail},function(data){
+			$.getJSON("checkEmailCo.do",{tEmail:tEmail},function(data){
 				re=data.re;
 				if(re==1){
 					alert("이미 있는 이메일입니다.");
@@ -152,7 +152,7 @@
 			9-1. 메뉴 이미지 삽입 x
 	 -->
 	insert Restaurant Page
-	<form action="insertRestaurant.do" method="post" enctype="multipart/form-data">
+	<form action="insertCoMember.do" method="post" enctype="multipart/form-data">
 	
 		이메일 : <input type="hidden" name="tEmail" id="tEmail" value="">
 				<input type="text" name="e1" id="e1" value="" onchange="email()">

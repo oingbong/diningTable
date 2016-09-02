@@ -18,7 +18,7 @@ import com.dt.dao.RestaurantDao;
 import com.dt.vo.RestaurantVo;
 
 @Controller
-public class RestaurantController {
+public class CoMemberController {
 	@Autowired
 	private RestaurantDao dao;
 
@@ -27,34 +27,33 @@ public class RestaurantController {
 	}
 	
 	// 레스토랑 목록
-	@RequestMapping("/listRestaurant.do")
+	@RequestMapping("/listCoMember.do")
 	public ModelAndView list(){
 		ModelAndView view = new ModelAndView();
 		view.addObject("list", dao.list());
-		view.addObject("viewPage","listRestaurant.jsp");
+		view.addObject("viewPage","listCoMember.jsp");
 		view.setViewName("template");
-		//view.setViewName("listRestaurant");
 		return view;
 	}
 	
 	// 레스토랑 상세 정보
-	@RequestMapping("/detailRestaurant.do")
+	@RequestMapping("/detailCoMember.do")
 	public ModelAndView detail(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionTno = (Integer)session.getAttribute("tNo"); // session 값에 담긴 tNo
 		view.addObject("t", dao.detail(getSessionTno));
-		view.addObject("viewPage", "detailRestaurant.jsp");
+		view.addObject("viewPage", "detailCoMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 레스토랑 정보 삭제
-	@RequestMapping("/deleteRestaurant.do")
+	@RequestMapping("/deleteCoMember.do")
 	public ModelAndView delete(int tNo){
 		ModelAndView view = new ModelAndView();
 		int re = dao.delete(tNo);
 		if(re >=1){
-			view.setViewName("redirect:/listRestaurant.do");
+			view.setViewName("redirect:/listCoMember.do");
 		}else{
 			view.addObject("msg", "레스토랑 정보 삭제 실패");
 			view.addObject("viewPage", "error.jsp");
@@ -64,16 +63,16 @@ public class RestaurantController {
 	}
 	
 	// 레스토랑 추가 폼
-	@RequestMapping(value="/insertRestaurant.do", method=RequestMethod.GET)
+	@RequestMapping(value="/insertCoMember.do", method=RequestMethod.GET)
 	public ModelAndView insertForm(){
 		ModelAndView view = new ModelAndView();
-		view.addObject("viewPage", "insertRestaurant.jsp");
+		view.addObject("viewPage", "insertCoMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 레스토랑 추가 처리
-	@RequestMapping(value="/insertRestaurant.do", method=RequestMethod.POST)
+	@RequestMapping(value="/insertCoMember.do", method=RequestMethod.POST)
 	public ModelAndView insert(RestaurantVo t, HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
 		
@@ -110,19 +109,19 @@ public class RestaurantController {
 	}
 	
 	// 레스토랑 수정 폼
-	@RequestMapping(value="/updateRestaurant.do", method=RequestMethod.GET)
+	@RequestMapping(value="/updateCoMember.do", method=RequestMethod.GET)
 	public ModelAndView updateForm(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionTno = (Integer)session.getAttribute("tNo");
 		RestaurantVo t = dao.detail(getSessionTno);
 		view.addObject("t", t);
-		view.addObject("viewPage", "updateRestaurant.jsp");
+		view.addObject("viewPage", "updateCoMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 레스토랑 수정 처리
-	@RequestMapping(value="/updateRestaurant.do", method=RequestMethod.POST)
+	@RequestMapping(value="/updateCoMember.do", method=RequestMethod.POST)
 	public ModelAndView update(RestaurantVo t, HttpServletRequest request){
 		
 		String path = request.getRealPath("/resources/upload");		
@@ -156,7 +155,7 @@ public class RestaurantController {
 				File file = new File(path + "/" + oldFname); // 기존 파일 삭제를 위한 것
 				file.delete(); // 기존 파일 삭제
 			}
-			view.setViewName("redirect:/listRestaurant.do");
+			view.setViewName("redirect:/listCoMember.do");
 		}else{
 			if(newFname != null && !newFname.equals("")){
 				File file = new File(path + "/" + newFname); // 새로운 파일 삭제 위한 것
@@ -170,7 +169,7 @@ public class RestaurantController {
 	}
 	
 	// 이메일 중복 체크
-	@RequestMapping("/checkEmailRest.do")
+	@RequestMapping("/checkEmailCo.do")
 	public ModelAndView checkEmail(String tEmail){
 		ModelAndView view = new ModelAndView();
 		System.out.println("tEmail : " + tEmail);

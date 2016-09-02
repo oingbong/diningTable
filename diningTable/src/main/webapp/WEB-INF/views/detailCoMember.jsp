@@ -18,7 +18,7 @@
 		<tr><td>레스토랑 휴식시작시간 : ${t.tTimeBs }</td></tr>
 		<tr><td>레스토랑 휴식마감시간 : ${t.tTimeBc }</td></tr>
 		<tr><td>레스토랑 휴일 : ${t.tHoliday }</td></tr>
-		<tr><td><a href="updateRestaurant.do">레스토랑 정보수정</a></td></tr>
+		<tr><td><a href="updateCoMember.do">레스토랑 정보수정</a></td></tr>
 	</table>
 </body>
 </html>
