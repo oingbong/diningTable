@@ -25,4 +25,14 @@ public class RestaurantController {
 		view.setViewName("template");
 		return view;
 	}
+	
+	// 레스토랑 상세정보
+	@RequestMapping("/detailRestaurant.do")
+	public ModelAndView detail(int tNo){
+		ModelAndView view = new ModelAndView();
+		view.addObject("t", dao.detail(tNo));
+		view.addObject("viewPage","detailRestaurant.jsp");
+		view.setViewName("template");
+		return view;
+	}
 }
