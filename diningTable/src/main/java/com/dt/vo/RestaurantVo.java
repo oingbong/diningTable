@@ -30,7 +30,6 @@ public class RestaurantVo {
 		return uploadFile;
 	}
 
-
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}

@@ -10,6 +10,7 @@
 <body>
 	<a href="listMember.do">listMember</a>&nbsp;
 	<a href="listCoMember.do">listCoMember</a>&nbsp;
+	<a href="listRestaurant.do">listRestaurant</a>&nbsp;
 	<a href="main.do">main</a>&nbsp;
 	<c:choose>
 		<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
