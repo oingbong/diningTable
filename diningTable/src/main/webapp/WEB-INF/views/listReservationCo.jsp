@@ -7,6 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#list:hover{
+		background-color: lime;
+		cursor: pointer;
+	}
+</style>
+<script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+	function detail(rNo) {
+		location.href="detailReservation.do?rNo="+rNo;
+	}
+</script>
 </head>
 <body>
 	레스토랑에 예약된 리스트
@@ -20,7 +32,7 @@
 			<td>회원 번호</td>
 		</tr>
 		<c:forEach var="r" items="${list }">
-			<tr>
+			<tr id="list" onclick="detail(${r.rNo})">
 				<td>${r.rNo }</td>
 				<td><fmt:formatDate value="${r.rDate }" pattern="yyyy-MM-dd"/></td>
 				<td>${r.rTime }</td>
