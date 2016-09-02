@@ -37,6 +37,14 @@ public class ReservationDao {
 		return list;
 	}
 	
+	// 레스토랑에 예약된 리스트
+	public List<ReservationVo> listCo(int tNo){
+		SqlSession session = factory.openSession();
+		List<ReservationVo> list = session.selectList("reservation.selectT", tNo);
+		session.close();
+		return list;
+	}
+	
 	// 예약 상세정보
 	public ReservationVo detail(int rNo){
 		SqlSession session = factory.openSession();

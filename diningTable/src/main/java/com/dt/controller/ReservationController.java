@@ -47,6 +47,17 @@ public class ReservationController {
 		return view;
 	}
 	
+	// 레스토랑에 예약된 리스트
+	@RequestMapping("/listReservationCo.do")
+	public ModelAndView listCo(HttpSession session){
+		ModelAndView view = new ModelAndView();
+		int getSessionTno = (Integer)session.getAttribute("tNo");
+		view.addObject("list", daoR.listCo(getSessionTno));
+		view.addObject("viewPage", "listReservationCo.jsp");
+		view.setViewName("template");
+		return view;
+	}
+	
 	// 예약 상세 정보
 	@RequestMapping("/detailReservation.do")
 	public ModelAndView detail(int rNo){

@@ -19,6 +19,7 @@
 			<a href="logout.do">logout</a>&nbsp;
 		</c:when>
 		<c:when test="${tNo != null}"><!-- 레스토랑 회원 경우 보이는 메뉴 -->
+			<a href="listReservationCo.do">예약자 정보 확인</a>&nbsp;
 			<a href="detailCoMember.do">change informationR</a>&nbsp;
 			<a href="logout.do">logout</a>&nbsp;
 		</c:when>
