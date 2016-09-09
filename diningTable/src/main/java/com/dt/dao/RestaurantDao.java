@@ -95,4 +95,12 @@ public class RestaurantDao {
 		session.close();
 		return t;
 	}
+	
+	// 레스토랑 검색 목록
+	public List<RestaurantVo> listSearch(RestaurantVo t){
+		SqlSession session = factory.openSession();
+		List<RestaurantVo> list = session.selectList("restaurant.selectSearch", t);
+		session.close();
+		return list;
+	}
 }

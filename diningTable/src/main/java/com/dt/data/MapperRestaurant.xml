@@ -37,4 +37,17 @@
 	<select id="login" resultType="restaurantVo">
 		select * from restaurant where tEmail=#{tEmail} and tPwd=#{tPwd}
 	</select>
+	<!-- 레스토랑 검색 리스트 -->
+	<select id="selectSearch" resultType="restaurantVo" parameterType="restaurantVo">
+ 		select * from restaurant
+			<if test="tAddrF != null">
+			 where tAddrF like '%' || #{tAddrF} || '%'
+			</if>
+			<if test="tAddrS != null">
+				 and tAddrS like '%' || #{tAddrS} || '%'
+			</if>
+			<if test="tType != null">
+				 and tType like '%' || #{tType} || '%'
+			</if>
+	</select>
 </mapper>

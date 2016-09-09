@@ -139,10 +139,10 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<br>
+	<br><br>
 	
 	<!-- 검색을 위한 것 -->
-	<form action="">
+	<form action="listRestaurant.do" method="post">
 		지역 : <input type="hidden" name="tAddrF" id="tAddrF" value="">
 		<select name="addrSelectF" id="addrSelectF" onchange="addrSetF()"></select>
 		
@@ -152,6 +152,7 @@
 		레스토랑 타입 : <input type="hidden" name="tType" id="tType" value="">
 		<select name="typeSelect" id="typeSelect" onchange="typeSet()"></select>
 		
+		<input type="submit" value="검색하기">
 	</form>
 	
 </body>
