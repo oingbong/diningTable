@@ -10,6 +10,13 @@
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
+	// spinner
+	$(function(){
+	    var spinner = $( "#rNumber" ).spinner();
+	    $( "button" ).button();
+  	});
+
+
 	// datePicker 설정
 	$.datepicker.setDefaults({
         dateFormat: 'yy-mm-dd', // 날짜 형식 20xx-xx-xx
