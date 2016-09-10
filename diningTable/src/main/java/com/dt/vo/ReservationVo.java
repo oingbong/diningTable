@@ -4,15 +4,14 @@ import java.util.Date;
 
 public class ReservationVo {
 	private int rNo;
-	private Date rDate;
+	private String rDate;
 	private String rTime;
 	private int rNumber;
 	private String rRequest;
 	private int mNo;
 	private int tNo;
 	
-	
-	public ReservationVo(int rNo, Date rDate, String rTime, int rNumber, String rRequest, int mNo, int tNo) {
+	public ReservationVo(int rNo, String rDate, String rTime, int rNumber, String rRequest, int mNo, int tNo) {
 		super();
 		this.rNo = rNo;
 		this.rDate = rDate;
@@ -36,11 +35,11 @@ public class ReservationVo {
 		this.rNo = rNo;
 	}
 
-	public Date getrDate() {
+	public String getrDate() {
 		return rDate;
 	}
 
-	public void setrDate(Date rDate) {
+	public void setrDate(String rDate) {
 		this.rDate = rDate;
 	}
 
@@ -83,4 +82,5 @@ public class ReservationVo {
 	public void settNo(int tNo) {
 		this.tNo = tNo;
 	}
+	
 }

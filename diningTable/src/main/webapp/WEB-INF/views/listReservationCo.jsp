@@ -34,7 +34,7 @@
 		<c:forEach var="r" items="${list }">
 			<tr id="list" onclick="detail(${r.rNo})">
 				<td>${r.rNo }</td>
-				<td><fmt:formatDate value="${r.rDate }" pattern="yyyy-MM-dd"/></td>
+				<td>${r.rDate }</td>
 				<td>${r.rTime }</td>
 				<td>${r.rNumber }</td>
 				<td>${r.mNo }</td>

@@ -11,7 +11,7 @@
 <body>
 	<table border="1">
 		<tr><td>예약번호</td><td>${r.rNo }</td></tr>
-		<tr><td>날짜</td><td><fmt:formatDate value="${r.rDate }" pattern="yyyy-MM-dd"/> </td></tr>
+		<tr><td>날짜</td><td>${r.rDate }</td></tr>
 		<tr><td>시간</td><td>${r.rTime }</td></tr>
 		<tr><td>인원수</td><td>${r.rNumber }</td></tr>
 		<tr><td>요구사항</td><td><textarea rows="5" cols="50">${r.rRequest }</textarea> </td></tr>
