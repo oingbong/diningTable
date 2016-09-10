@@ -35,9 +35,7 @@
 
 	// rDate에 datePicker 추가
 	$(function(){
-		$( "#choiceDate" ).datepicker({onSelect: function(dateValue) { //datepicker 클릭시 이벤트 발생
-			$("#rDate").val(dateValue);
-		}});
+		$("#rDate").datepicker();
 	});
 	
 	$(document).ready(function() {
@@ -63,8 +61,7 @@
 </head>
 <body>
 	<form action="insertReservation.do" method="post">
-		예약 날짜 : <input type="text" name="rDate" id="rDate" value="">
-		<input type="text" name="choiceDate" id="choiceDate" value=""><br>
+		예약 날짜 : <input type="text" name="rDate" id="rDate" value=""><br>
 		예약 시간 : <input type="hidden" name="rTime" id="rTime" value="">
 			<select name="r1" id="r1" onchange="timeSet()"></select>
 		<br>
