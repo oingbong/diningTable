@@ -119,4 +119,19 @@ public class ReservationController {
 		}
 		return view;
 	}
+	
+	// 예약 취소
+	@RequestMapping("/deleteReservation.do")
+	public ModelAndView delete(int rNo){
+		ModelAndView view = new ModelAndView();
+		int re = daoR.delete(rNo);
+		if(re >= 1){
+			view.setViewName("redirect:/listReservation.do");
+		}else{
+			view.addObject("msg","예약 취소 실패");
+			view.addObject("viewPage","error.jsp");
+			view.setViewName("template");
+		}
+		return view;
+	}
 }

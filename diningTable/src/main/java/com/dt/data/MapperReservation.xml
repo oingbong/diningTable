@@ -23,4 +23,8 @@
 	<update id="update" parameterType="reservationVo">
 		update reservation set rDate=#{rDate}, rTime=#{rTime}, rNumber=#{rNumber}, rRequest=#{rRequest}, mNo=#{mNo}, tNo=#{tNo} where rNo=#{rNo}
 	</update>
+	<!-- 예약 취소 -->
+	<delete id="delete" parameterType="reservationVo">
+		delete reservation where rNo=#{rNo}
+	</delete>
 </mapper>

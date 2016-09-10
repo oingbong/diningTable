@@ -70,4 +70,13 @@ public class ReservationDao {
 		session.close();
 		return re;
 	}
+	
+	// 예약 취소
+	public int delete(int rNo){
+		SqlSession session = factory.openSession();
+		int re = session.delete("reservation.delete", rNo);
+		session.commit();
+		session.close();
+		return re;
+	}
 }

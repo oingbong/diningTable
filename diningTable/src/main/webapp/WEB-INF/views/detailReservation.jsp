@@ -19,6 +19,7 @@
 	<c:choose>
 		<c:when test="${mNo != null }"><!-- 개인회원 경우 보이는 메뉴 -->
 			<a href="updateReservation.do?rNo=${r.rNo }">예약 수정하기</a>
+			<a href="deleteReservation.do?rNo=${r.rNo }">예약 취소하기</a>
 		</c:when>
 		<c:otherwise>
 			<a href="listReservationCo.do">예약 목록으로 돌아가기</a>
