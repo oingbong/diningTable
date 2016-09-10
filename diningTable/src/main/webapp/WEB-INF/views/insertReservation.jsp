@@ -5,6 +5,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script>
+		$.datepicker.setDefaults({
+	        dateFormat: 'yy-mm-dd', // 날짜 형식 20xx-xx-xx
+	        minDate:0, // 오늘 이후부터 선택 가능
+	     	// datepicker 한글설정
+	        prevText: '이전 달',
+	        nextText: '다음 달',
+	        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	        showMonthAfterYear: true,
+	        yearSuffix: '년'
+	    });
+	
+		$(function(){
+			$( "#rDate" ).datepicker();
+		});
+	</script>
 </head>
 <body>
 	<form action="insertReservation.do" method="post">
