@@ -61,4 +61,13 @@ public class ReservationDao {
 		session.close();
 		return re;
 	}
+	
+	// 예약 수정
+	public int update(ReservationVo r){
+		SqlSession session = factory.openSession();
+		int re = session.update("reservation.update", r);
+		session.commit();
+		session.close();
+		return re;
+	}
 }

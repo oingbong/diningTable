@@ -94,4 +94,29 @@ public class ReservationController {
 		}
 		return view;
 	}
+	
+	// 예약 수정 폼
+	@RequestMapping(value="/updateReservation.do", method=RequestMethod.GET)
+	public ModelAndView updateForm(int rNo){
+		ModelAndView view = new ModelAndView();
+		view.addObject("r", daoR.detail(rNo));
+		view.addObject("viewPage", "updateReservation.jsp");
+		view.setViewName("template");
+		return view;
+	}
+	
+	// 예약 수정 처리
+	@RequestMapping(value="/updateReservation.do", method=RequestMethod.POST)
+	public ModelAndView update(ReservationVo r){
+		ModelAndView view = new ModelAndView();
+		int re = daoR.update(r);
+		if(re >= 1){
+			view.setViewName("redirect:/listReservation.do");
+		}else{
+			view.addObject("msg","예약 정보 수정 실패");
+			view.addObject("viewPage", "error.jsp");
+			view.setViewName("template");
+		}
+		return view;
+	}
 }

@@ -19,4 +19,8 @@
 	<insert id="insert" parameterType="reservationVo">
 		insert into reservation values (seqReservation.nextval, #{rDate},#{rTime},#{rNumber},#{rRequest},#{mNo},#{tNo})
 	</insert>
+	<!-- 예약 수정 -->
+	<update id="update" parameterType="reservationVo">
+		update reservation set rDate=#{rDate}, rTime=#{rTime}, rNumber=#{rNumber}, rRequest=#{rRequest}, mNo=#{mNo}, tNo=#{tNo} where rNo=#{rNo}
+	</update>
 </mapper>
