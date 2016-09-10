@@ -81,7 +81,7 @@
 		$("#tAddrF").val(addr);
 	}
   	
-  	// 시간 관련과 관련된 select option 값 가져오기(DB 저장값을 위한 것)
+  	// 시간과 관련된 select option 값 가져오기(DB 저장값을 위한 것)
   	function timeSet() {
 		var s1 = $("#s1 option:selected").val();
 		var c1 = $("#c1 option:selected").val();

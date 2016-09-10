@@ -15,10 +15,12 @@
 		<tr><td>시간</td><td>${r.rTime }</td></tr>
 		<tr><td>인원수</td><td>${r.rNumber }</td></tr>
 		<tr><td>요구사항</td><td><textarea rows="5" cols="50">${r.rRequest }</textarea> </td></tr>
+		<tr><td>레스토랑 번호</td><td>${r.tNo }</td></tr>
 	</table>
+	<br>
 	<c:choose>
 		<c:when test="${mNo != null }"><!-- 개인회원 경우 보이는 메뉴 -->
-			<a href="updateReservation.do?rNo=${r.rNo }">예약 수정하기</a>
+			<a href="updateReservation.do?rNo=${r.rNo }">예약 수정하기</a>&nbsp;&nbsp;&nbsp;
 			<a href="deleteReservation.do?rNo=${r.rNo }">예약 취소하기</a>
 		</c:when>
 		<c:otherwise>
