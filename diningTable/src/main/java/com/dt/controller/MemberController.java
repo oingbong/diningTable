@@ -113,9 +113,9 @@ public class MemberController {
 	@RequestMapping("/checkEmail.do")
 	public ModelAndView checkEmail(String mEmail){
 		ModelAndView view = new ModelAndView();
-		System.out.println("mEmail : " + mEmail);
+		//System.out.println("mEmail : " + mEmail);
 		int re = dao.emailCheck(mEmail);
-		System.out.println("re : " + re);
+		//System.out.println("re : " + re);
 		view.addObject("re",re);
 		return view;
 	}

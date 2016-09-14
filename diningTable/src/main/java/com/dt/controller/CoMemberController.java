@@ -172,9 +172,9 @@ public class CoMemberController {
 	@RequestMapping("/checkEmailCo.do")
 	public ModelAndView checkEmail(String tEmail){
 		ModelAndView view = new ModelAndView();
-		System.out.println("tEmail : " + tEmail);
+		//System.out.println("tEmail : " + tEmail);
 		int re = dao.emailCheck(tEmail);
-		System.out.println("re : " + re);
+		//System.out.println("re : " + re);
 		view.addObject("re", re);
 		return view;
 	}
