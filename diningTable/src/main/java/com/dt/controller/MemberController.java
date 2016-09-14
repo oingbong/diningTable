@@ -31,13 +31,13 @@ public class MemberController {
 	}
 	
 	// 회원 상세 정보
-	@RequestMapping("/detailMember.do")
+	@RequestMapping("/member/detailMember.do")
 	public ModelAndView detail(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionMno = (Integer) session.getAttribute("mNo"); // session 에 담긴  mNo 값 가져오기
 		//System.out.println("Controller 에서 getSessionMno 값 : " + getSessionMno);
 		view.addObject("m", dao.detail(getSessionMno));
-		view.addObject("viewPage", "detailMember.jsp");
+		view.addObject("viewPage", "member/detailMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
@@ -83,24 +83,24 @@ public class MemberController {
 	}
 	
 	// 회원 수정 폼
-	@RequestMapping(value="/updateMember.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/updateMember.do", method=RequestMethod.GET)
 	public ModelAndView updateForm(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionMno = (Integer) session.getAttribute("mNo"); // session 에 담긴 mNo 값 가져오기
 		MemberVo m = dao.detail(getSessionMno);
 		view.addObject("m", m);
-		view.addObject("viewPage", "updateMember.jsp");
+		view.addObject("viewPage", "member/updateMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 회원 수정 처리
-	@RequestMapping(value="/updateMember.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/updateMember.do", method=RequestMethod.POST)
 	public ModelAndView update(MemberVo m){
 		ModelAndView view = new ModelAndView();
 		int re = dao.update(m);
 		if(re >=1){
-			view.setViewName("redirect:/listMember.do");
+			view.setViewName("redirect:/main.do");
 		}else{
 			view.addObject("msg", "회원 정보 수정 실패");
 			view.addObject("viewPage", "error.jsp");

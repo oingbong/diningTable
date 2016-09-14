@@ -37,12 +37,12 @@ public class CoMemberController {
 	}
 	
 	// 레스토랑 상세 정보
-	@RequestMapping("/detailCoMember.do")
+	@RequestMapping("/member/detailCoMember.do")
 	public ModelAndView detail(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionTno = (Integer)session.getAttribute("tNo"); // session 값에 담긴 tNo
 		view.addObject("t", dao.detail(getSessionTno));
-		view.addObject("viewPage", "detailCoMember.jsp");
+		view.addObject("viewPage", "member/detailCoMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
@@ -109,19 +109,19 @@ public class CoMemberController {
 	}
 	
 	// 레스토랑 수정 폼
-	@RequestMapping(value="/updateCoMember.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/updateCoMember.do", method=RequestMethod.GET)
 	public ModelAndView updateForm(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionTno = (Integer)session.getAttribute("tNo");
 		RestaurantVo t = dao.detail(getSessionTno);
 		view.addObject("t", t);
-		view.addObject("viewPage", "updateCoMember.jsp");
+		view.addObject("viewPage", "member/updateCoMember.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 레스토랑 수정 처리
-	@RequestMapping(value="/updateCoMember.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/updateCoMember.do", method=RequestMethod.POST)
 	public ModelAndView update(RestaurantVo t, HttpServletRequest request){
 		
 		String path = request.getRealPath("/resources/upload");		

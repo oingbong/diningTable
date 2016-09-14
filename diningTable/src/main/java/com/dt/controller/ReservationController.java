@@ -37,51 +37,51 @@ public class ReservationController {
 	}
 	
 	// 개인회원 예약 리스트
-	@RequestMapping("/listReservation.do")
+	@RequestMapping("/member/listReservation.do")
 	public ModelAndView list(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionMno = (Integer)session.getAttribute("mNo");
 		view.addObject("list", daoR.list(getSessionMno));
-		view.addObject("viewPage", "listReservation.jsp");
+		view.addObject("viewPage", "member/listReservation.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 레스토랑에 예약된 리스트
-	@RequestMapping("/listReservationCo.do")
+	@RequestMapping("/member/listReservationCo.do")
 	public ModelAndView listCo(HttpSession session){
 		ModelAndView view = new ModelAndView();
 		int getSessionTno = (Integer)session.getAttribute("tNo");
 		view.addObject("list", daoR.listCo(getSessionTno));
-		view.addObject("viewPage", "listReservationCo.jsp");
+		view.addObject("viewPage", "member/listReservationCo.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 예약 상세 정보
-	@RequestMapping("/detailReservation.do")
+	@RequestMapping("/member/detailReservation.do")
 	public ModelAndView detail(int rNo){
 		ModelAndView view = new ModelAndView();
 		view.addObject("r", daoR.detail(rNo));
-		view.addObject("viewPage", "detailReservation.jsp");
+		view.addObject("viewPage", "member/detailReservation.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 예약 하기 폼
-	@RequestMapping(value="/insertReservation.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/insertReservation.do", method=RequestMethod.GET)
 	public ModelAndView insertForm(HttpSession session, int tNo){
 		ModelAndView view = new ModelAndView();
 		int getSessionMno = (Integer) session.getAttribute("mNo");
 		view.addObject("m", daoM.detail(getSessionMno));
 		view.addObject("t", daoT.detail(tNo));
-		view.addObject("viewPage","insertReservation.jsp");
+		view.addObject("viewPage","member/insertReservation.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 예약 하기 처리
-	@RequestMapping(value="/insertReservation.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/insertReservation.do", method=RequestMethod.POST)
 	public ModelAndView insert(ReservationVo r){
 		ModelAndView view = new ModelAndView();
 		int re = daoR.insert(r);
@@ -96,22 +96,22 @@ public class ReservationController {
 	}
 	
 	// 예약 수정 폼
-	@RequestMapping(value="/updateReservation.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/updateReservation.do", method=RequestMethod.GET)
 	public ModelAndView updateForm(int rNo){
 		ModelAndView view = new ModelAndView();
 		view.addObject("r", daoR.detail(rNo));
-		view.addObject("viewPage", "updateReservation.jsp");
+		view.addObject("viewPage", "member/updateReservation.jsp");
 		view.setViewName("template");
 		return view;
 	}
 	
 	// 예약 수정 처리
-	@RequestMapping(value="/updateReservation.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/updateReservation.do", method=RequestMethod.POST)
 	public ModelAndView update(ReservationVo r){
 		ModelAndView view = new ModelAndView();
 		int re = daoR.update(r);
 		if(re >= 1){
-			view.setViewName("redirect:/listReservation.do");
+			view.setViewName("redirect:/member/listReservation.do");
 		}else{
 			view.addObject("msg","예약 정보 수정 실패");
 			view.addObject("viewPage", "error.jsp");
@@ -121,12 +121,12 @@ public class ReservationController {
 	}
 	
 	// 예약 취소
-	@RequestMapping("/deleteReservation.do")
+	@RequestMapping("/member/deleteReservation.do")
 	public ModelAndView delete(int rNo){
 		ModelAndView view = new ModelAndView();
 		int re = daoR.delete(rNo);
 		if(re >= 1){
-			view.setViewName("redirect:/listReservation.do");
+			view.setViewName("redirect:/member/listReservation.do");
 		}else{
 			view.addObject("msg","예약 취소 실패");
 			view.addObject("viewPage","error.jsp");

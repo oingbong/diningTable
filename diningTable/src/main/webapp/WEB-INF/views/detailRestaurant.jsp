@@ -22,7 +22,7 @@
 		<tr><td>휴식마감 : </td><td>${t.tTimeBc }</td></tr>
 		<tr><td>휴일 : </td><td>${t.tHoliday }</td></tr>
 		<tr>
-			<td><a href="insertReservation.do?tNo=${t.tNo }">예약하기</a></td>
+			<td><a href="member/insertReservation.do?tNo=${t.tNo }">예약하기</a></td>
 		</tr>
 	</table>
 </body>
