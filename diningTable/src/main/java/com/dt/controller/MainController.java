@@ -67,8 +67,16 @@ public class MainController {
 			//System.out.println("MainController 로그인 시 이메일에 대한 mNo 값 : " + mNo);
 			session.setAttribute("mNo", mNo);
 			view.addObject("login",2); // 로그인 처리에 대한 alert 띄우기 위한 코드
+			
+			// redirect 유무에 따른 문제점
+			// 1번 : 해당 내용이 나오지 않음
+			// 2번 : alert 이벤트가 적용되지 않음 
+			
+			// 1번 방법
 			view.addObject("viewPage", "main.jsp");
 			view.setViewName("template");
+			// 2번 방법
+			//view.setViewName("redirect:/listRestaurant.do");
 		}else{
 			view.setViewName("redirect:/login.do");
 		}
