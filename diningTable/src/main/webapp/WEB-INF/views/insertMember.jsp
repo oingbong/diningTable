@@ -9,7 +9,6 @@
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
  	$(document).ready(function(){
- 		
 		$(".submit").click(function (event) { // 비밀번호 체크
 			var mPwd = $("#mPwd").val();
 			var mPwdCheck = $("#mPwdCheck").val();
@@ -34,21 +33,25 @@
 	}) 
 	
 	function email() {
- 		var email = $("#e1").val() + $("#e2").val();
-		$("#mEmail").val(email.replace(/[^a-z,0-9,@,.]/gi,"")); // 한글제외 한 이메일 형식만 사용가능
+		var emailF = $("#e1").val();
+		var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글찾기
+		if(check.test(emailF)){
+			$("#e1").val("");
+			alert("이메일 형식이 맞지 않습니다(한글포함)");
+		}
 	}
 	
   	function phone() {
-  		event = event || window.event;
-  		var keyID = (event.which) ? event.which : event.keyCode;
-  		if((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) 
-  			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
-  			|| $("#p1 option:selected").val()){
-  			
-	  			var phoneF = $("#p1").val();
-				$("#mPhoneF").val(phoneF);
-  		}else{
-  			return false;
+  		var mPhoneS = $("#mPhoneS").val();
+  		var mPhoneT = $("#mPhoneT").val();
+  		var check = /[^0-9]/; // 숫자가 아닌 것 찾기
+  		// 하이라이트 추가예정
+  		if(check.test(mPhoneS)){
+  			$("#mPhoneS").val("");
+  			alert("숫자만 입력해주세요");
+  		}else if(check.test(mPhoneT)){
+  			$("#mPhoneT").val("");
+  			alert("숫자만 입력해주세요")
   		}
 	}
 	
@@ -125,8 +128,8 @@
 				<option value="017">017
 				<option value="019">019
 			</select>
-			-<input type="text" name="mPhoneS" id="mPhoneS" value="">
-			-<input type="text" name="mPhoneT" id="mPhoneT" value="">
+			-<input type="text" name="mPhoneS" id="mPhoneS" value="" onchange="phone()">
+			-<input type="text" name="mPhoneT" id="mPhoneT" value="" onchange="phone()">
 		<br>
 		
 		성별 : <input type="radio" name="mGender" value="남">남
