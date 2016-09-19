@@ -34,17 +34,25 @@
 	
 	function email() {
 		var emailF = $("#e1").val();
+		var emailS = $("#e2").val();
 		var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글찾기
+		
 		if(check.test(emailF)){
 			$("#e1").val("");
+			$("#mEmail").val("");
 			alert("이메일 형식이 맞지 않습니다(한글포함)");
+		}else{
+			$("#mEmail").val(emailF + emailS);
 		}
 	}
 	
   	function phone() {
+  		var selectP1 = $("#p1 option:selected").val();
+  		$("#mPhoneF").val(selectP1);
   		var mPhoneS = $("#mPhoneS").val();
   		var mPhoneT = $("#mPhoneT").val();
   		var check = /[^0-9]/; // 숫자가 아닌 것 찾기
+  		
   		// 하이라이트 추가예정
   		if(check.test(mPhoneS)){
   			$("#mPhoneS").val("");
@@ -81,7 +89,7 @@
 	<!-- 
 		기능
 			1-1. 이메일 주소 선택시 자동입력 o (해결 못한것 : '직접입력' 선택 후 메일주소 선택하면 값 중복 (예) : test@naver.com@naver.com)
-			1-2. 이메일 중복확인 x
+			1-2. 이메일 중복확인 o
 			1-3. 이메일 한글 제한 o
 			2-1. 핸드폰 번호 선택시 자동입력 o
 			2-2. 핸드폰 숫자만 입력 가능, 문자 제한
