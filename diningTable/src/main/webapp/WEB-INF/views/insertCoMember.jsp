@@ -52,7 +52,18 @@
 	function email() {
  		var email = $("#e1").val() + $("#e2").val();
 		$("#tEmail").val(email.replace(/[^a-z,0-9,@,.]/gi,"")); // 한글제외 한 이메일 형식만 사용가능
-	}
+		var emailF = $("#e1").val();
+		var emailS = $("#e2").val();
+		var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글찾기
+		
+		if(check.test(emailF)){
+			$("#e1").val("");
+			$("#tEmail").val("");
+			alert("이메일 형식이 맞지 않습니다(한글포함)");
+		}else{
+			$("#tEmail").val(emailF + emailS);
+		}
+ 	}
  	
  	// 레스토랑 타입 읽어오기
  	function RestType() {
@@ -62,16 +73,19 @@
  	
  	// 레스토랑 번호 관련
   	function phone() {
-  		event = event || window.event;
-  		var keyID = (event.which) ? event.which : event.keyCode;
-  		if((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) 
-  			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 
-  			|| $("#p1 option:selected").val()){
-  			
-	  			var phoneF = $("#p1").val();
-				$("#tPhoneF").val(phoneF);
-  		}else{
-  			return false;
+  		var selectP1 = $("#p1 option:selected").val();
+  		$("#tPhoneF").val(selectP1);
+  		var tPhoneS = $("#tPhoneS").val();
+  		var tPhoneT = $("#tPhoneT").val();
+  		var check = /[^0-9]/; // 숫자가 아닌 것 찾기
+  		
+  		// 하이라이트 추가예정
+  		if(check.test(tPhoneS)){
+  			$("#tPhoneS").val("");
+  			alert("숫자만 입력해주세요");
+  		}else if(check.test(tPhoneT)){
+  			$("#tPhoneT").val("");
+  			alert("숫자만 입력해주세요")
   		}
 	}
   	
@@ -133,7 +147,7 @@
 	<!-- 
 		기능
 			1-1. 이메일 주소 선택시 자동입력 o (해결 못한것 : '직접입력' 선택 후 메일주소 선택하면 값 중복 (예) : test@naver.com@naver.com)
-			1-2. 이메일 중복확인 x
+			1-2. 이메일 중복확인 o
 			1-3. 이메일 한글 제한 o
 			1-4. 이메일 중복시에 가입 불가능 x , 현재는 이메일 중복 가입 됨..
 			2-1. 비밀번호 두번체크 o
