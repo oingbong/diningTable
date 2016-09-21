@@ -66,6 +66,8 @@ public class MainController {
 			int mNo = m.getmNo();
 			//System.out.println("MainController 로그인 시 이메일에 대한 mNo 값 : " + mNo);
 			session.setAttribute("mNo", mNo);
+			String mType = m.getmType();
+			session.setAttribute("mType", mType);			
 			view.addObject("login",2); // 로그인 처리에 대한 alert 띄우기 위한 코드
 			
 			// redirect 유무에 따른 문제점

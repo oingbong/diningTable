@@ -117,10 +117,12 @@
 </script>
 </head>
 <body>
-	<a href="/diningTable/listMember.do">listMember</a>&nbsp;
-	<a href="/diningTable/listCoMember.do">listCoMember</a>&nbsp;
 	<a href="/diningTable/listRestaurant.do">listRestaurant</a>&nbsp;
 	<a href="/diningTable/main.do">main</a>&nbsp;
+	<c:if test="${mType.equals('운영자') }">
+		<a href="/diningTable/listMember.do">listMember</a>&nbsp;
+		<a href="/diningTable/listCoMember.do">listCoMember</a>&nbsp;
+	</c:if>
 	<c:choose>
 		<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
 			<a href="/diningTable/member/listReservation.do">예약 정보 확인</a>&nbsp;
@@ -133,9 +135,9 @@
 			<a href="/diningTable/logout.do">logout</a>&nbsp;
 		</c:when>
 		<c:otherwise><!-- 로그인 하기 전 -->
-			<a href="login.do">login</a>&nbsp;
-			<a href="insertMember.do">insertMember</a>&nbsp;
-			<a href="insertCoMember.do">insertRestaurant</a>&nbsp;
+			<a href="/diningTable/login.do">login</a>&nbsp;
+			<a href="/diningTable/insertMember.do">insertMember</a>&nbsp;
+			<a href="/diningTable/insertCoMember.do">insertRestaurant</a>&nbsp;
 		</c:otherwise>
 	</c:choose>
 	
