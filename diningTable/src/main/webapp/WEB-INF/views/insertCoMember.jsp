@@ -5,6 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
  	$(document).ready(function(){
@@ -166,122 +174,180 @@
 			9-1. 메뉴 이미지 삽입 x
 	 -->
 	insert Restaurant Page
-	<form action="insertCoMember.do" method="post" enctype="multipart/form-data">
-	
-		이메일 : <input type="hidden" name="tEmail" id="tEmail" value="">
-				<input type="text" name="e1" id="e1" value="" onchange="email()">
-				@
-				<select name="e2" id="e2" onchange="email()">
+	<form action="insertCoMember.do" method="post" enctype="multipart/form-data" class="form-inline"> <!-- 인라인 폼 -->
+		<p>
+			<div class="form-group">
+				<label>이메일</label>
+				<input type="hidden" name="tEmail" id="tEmail" value="">
+				<input type="text" name="e1" id="e1" value="" onchange="email()" class="form-control" placeholder="이메일 아이디 입력">
+				<label>@</label>
+				<select name="e2" id="e2" onchange="email()" class="form-control">
 					<option value="">직접입력
 					<option value="@naver.com">naver.com
 					<option value="@gmail.com">gmail.com
 					<option value="@nate.com">nate.com
 					<option value="@daum.net">daum.net
 				</select>
-			<input type="button" name="eCheck" id="eCheck" value="중복 확인">
-		<br>
-		
-		비밀번호 : <input type="password" name="tPwd" id="tPwd" value="" onkeyup="pwd()">
-		<br>
-		비밀번호확인 :  <input type="password" name="tPwdCheck" id="tPwdCheck" value="" onkeyup="pwd()">
-		<br>
+				<input type="button" name="eCheck" id="eCheck" value="중복 확인" class="btn btn-default">
+			</div>
+		</p>
+
+		<p>
+			<div class="form-group">
+				<label>비밀번호</label>
+				<input type="password" name="tPwd" id="tPwd" value="" onkeyup="pwd()" class="form-control" placeholder="비밀번호">
+			</div>
+		</p>		
+
+		<p>
+			<div class="form-group">
+				<label>비밀번호확인</label>
+				<input type="password" name="tPwdCheck" id="tPwdCheck" value="" onkeyup="pwd()" class="form-control" placeholder="비밀번호확인">
+			</div>
+		</p>
 		
 		<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
 		
-		레스토랑 타입 : <input type="hidden" name="tType" id="tType" value="">
-			<select name="type" id="type" onchange="RestType()">
-				<option value="">선택하세요
-				<option value="Korean">Korean
-				<option value="Western">Western
-				<option value="Japanese">Japanese
-				<option value="Chinese">Chinese
-				<option value="Contemporary">Contemporary
-				<option value="Pub">Pub
-				<option value="Bar">Bar
-				<option value="Cafe">Cafe
-				<option value="Bakery">Bakery
-				<option value="BBQ">BBQ
-				<option value="Buffet">Buffet
-			</select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>레스토랑 타입</label>
+				<input type="hidden" name="tType" id="tType" value="">
+				<select name="type" id="type" onchange="RestType()" class="form-control">
+					<option value="">선택하세요
+					<option value="Korean">Korean
+					<option value="Western">Western
+					<option value="Japanese">Japanese
+					<option value="Chinese">Chinese
+					<option value="Contemporary">Contemporary
+					<option value="Pub">Pub
+					<option value="Bar">Bar
+					<option value="Cafe">Cafe
+					<option value="Bakery">Bakery
+					<option value="BBQ">BBQ
+					<option value="Buffet">Buffet
+				</select>
+			</div>
+		</p>
 		
-		레스토랑 명 : <input type="text" name="tName" id="tName" value="">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>레스토랑 명</label>
+				<input type="text" name="tName" id="tName" value="" class="form-control" placeholder="레스토랑 명">
+			</div>
+		</p>
 		
-		전화번호 : <input type="hidden" name="tPhoneF" id="tPhoneF" value="">
-			<select name="p1" id="p1" onchange="phone()">
-				<option value="">선택하세요
-				<option value="02">02
-				<option value="032">032
-				<option value="042">042
-				<option value="051">051
-				<option value="053">053
-				<option value="064">064
-			</select>
-			-<input type="text" name="tPhoneS" id="tPhoneS" value="" >
-			-<input type="text" name="tPhoneT" id="tPhoneT" value="" >
-		<br>
+		<p>
+			<div class="form-group">
+				<label>전화번호</label>
+				<input type="hidden" name="tPhoneF" id="tPhoneF" value="">
+				<select name="p1" id="p1" onchange="phone()" class="form-control">
+					<option value="">선택하세요
+					<option value="02">02
+					<option value="032">032
+					<option value="042">042
+					<option value="051">051
+					<option value="053">053
+					<option value="064">064
+				</select>
+				<label>-</label>
+				<input type="text" name="tPhoneS" id="tPhoneS" value="" onchange="phone()" class="form-control">
+				<label>-</label>
+				<input type="text" name="tPhoneT" id="tPhoneT" value="" onchange="phone()" class="form-control">
+			</div>
+		</p>
 		
-		주소 : <input type="hidden" name="tAddrF" id="tAddrF" value="">
-			<select name="a1" id="a1" onchange="addr()">
-				<option value="">선택하세요
-				<option value="서울시">서울시
-				<option value="인천시">인천시
-				<option value="대전시">대전시
-				<option value="대구시">대구시
-				<option value="부산시">부산시
-				<option value="제주도">제주도
-			</select>
-			&nbsp;<input type="text" name="tAddrS" id="tAddrS" value="" >
-			&nbsp;<input type="text" name="tAddrT" id="tAddrT" value="" >
-			&nbsp;<input type="text" name="tAddrO" id="tAddrO" value="" >
-		<br>
+		<p>
+			<div class="form-group">
+				<label>주소</label>
+				<input type="hidden" name="tAddrF" id="tAddrF" value="">
+				<select name="a1" id="a1" onchange="addr()" class="form-control">
+					<option value="">선택하세요
+					<option value="서울시">서울시
+					<option value="인천시">인천시
+					<option value="대전시">대전시
+					<option value="대구시">대구시
+					<option value="부산시">부산시
+					<option value="제주도">제주도
+				</select>
+				<input type="text" name="tAddrS" id="tAddrS" value="" class="form-control" placeholder="두번째 주소">
+				<input type="text" name="tAddrT" id="tAddrT" value="" class="form-control" placeholder="세번째 주소">
+				<input type="text" name="tAddrO" id="tAddrO" value="" class="form-control" placeholder="네번째 주소">
+			</div>
+		</p>
 		
-		오픈시간 : <input type="hidden" name="tTimeS" id="tTimeS" value="">
-			<select name="s1" id="s1" onchange="timeSet()"></select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>오픈시간</label>
+				<input type="hidden" name="tTimeS" id="tTimeS" value="">
+				<select name="s1" id="s1" onchange="timeSet()" class="form-control"></select>
+			</div>
+		</p>
 		
-		마감시간 : <input type="hidden" name="tTimeC" id="tTimeC" value="">
-			<select name="c1" id="c1" onchange="timeSet()"></select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>마감시간</label>
+				<input type="hidden" name="tTimeC" id="tTimeC" value="">
+				<select name="c1" id="c1" onchange="timeSet()" class="form-control"></select>
+			</div>
+		</p>
 		
-		휴무시간시작 : <input type="hidden" name="tTimeBs" id="tTimeBs" value="">
-			<select name="bs1" id="bs1" onchange="timeSet()"></select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>휴무시간시작</label>	
+				<input type="hidden" name="tTimeBs" id="tTimeBs" value="">
+				<select name="bs1" id="bs1" onchange="timeSet()" class="form-control"></select>
+			</div>
+		</p>
 		
-		휴무시간끝 : <input type="hidden" name="tTimeBc" id="tTimeBc" value="">
-			<select name="bc1" id="bc1" onchange="timeSet()"></select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>휴무시간끝</label>	
+				<input type="hidden" name="tTimeBc" id="tTimeBc" value="">
+				<select name="bc1" id="bc1" onchange="timeSet()" class="form-control"></select>
+			</div>
+		</p>
 		
-		휴무일 : <input type="hidden" name="tHoliday" id="tHoliday" value="">
-			<select name="h1" id="h1" onchange="holiday()">
-				<option value="">선택하세요
-				<option value="매주">매주
-				<option value="매월">매월
-				<option value="명절">명절
-				<option value="기타">기타
-			</select>
-			<select name="h2" id="h2" onchange="holiday()">
-				<option value="">선택하세요
-				<option value="일요일">일요일
-				<option value="월요일">월요일
-				<option value="화요일">화요일
-				<option value="수요일">수요일
-				<option value="목요일">목요일
-				<option value="금요일">금요일
-				<option value="토요일">토요일
-			</select>
-			<input type="text" name="h3" id="h3" onchange="holiday()" style="display: none;">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>휴무일</label>
+				<input type="hidden" name="tHoliday" id="tHoliday" value="">
+				<select name="h1" id="h1" onchange="holiday()" class="form-control">
+					<option value="">선택하세요
+					<option value="매주">매주
+					<option value="매월">매월
+					<option value="명절">명절
+					<option value="기타">기타
+				</select>
+				<select name="h2" id="h2" onchange="holiday()" class="form-control">
+					<option value="">선택하세요
+					<option value="일요일">일요일
+					<option value="월요일">월요일
+					<option value="화요일">화요일
+					<option value="수요일">수요일
+					<option value="목요일">목요일
+					<option value="금요일">금요일
+					<option value="토요일">토요일
+				</select>
+				<input type="text" name="h3" id="h3" onchange="holiday()" style="display: none;" class="form-control">
+			</div>
+		</p>		
 		
-		레스토랑 이미지 : <input type="file" name="uploadFile" id="uploadFile" value="">
-		<br>
+		<p> <!-- 부트스크랩 인라인폼에서는 파일이 적용되지 않는가? -->
+			<div class="form-group">
+				<label>레스토랑 이미지</label>
+				<input type="file" name="uploadFile" id="uploadFile" value="">
+			</div>
+		</p>
 		
-		레스토랑 메뉴 : <input type="text" name="tMenu" id="tMenu" value="">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>레스토랑 메뉴</label>
+				<input type="text" name="tMenu" id="tMenu" value="" class="form-control">
+			</div>
+		</p>
 		
-		<input type="submit" value="등록하기" class="submit">
-		<input type="reset" value="취소하기"><br>
+		<input type="submit" value="회원가입" class="submit btn btn-success"> <!-- class 여러개 -->
+		<input type="reset" value="취소" class="btn btn-warning"><br>
 	</form>
 </body>
 </html>
