@@ -108,9 +108,10 @@ public class MainController {
 	@RequestMapping("/logout.do")
 	public ModelAndView logout(HttpServletRequest request){
 		ModelAndView view = new ModelAndView();
-		// 나중에 mNo, tNo에 따른 session값 삭제 하기 (현재는 로그아웃 버튼 클릭시 같이 삭제하게 되어있음)
+		// 나중에 mNo, tNo, 운영자에 따른 session값 삭제 하기 (현재는 로그아웃 버튼 클릭시 같이 삭제하게 되어있음)
 		request.getSession().removeAttribute("mNo");
 		request.getSession().removeAttribute("tNo");
+		request.getSession().removeAttribute("mType");
 		
 		view.addObject("logout",1); // 로그아웃 처리에 대한 alert 띄우기 위한 코드
 		view.addObject("viewPage", "main.jsp");
