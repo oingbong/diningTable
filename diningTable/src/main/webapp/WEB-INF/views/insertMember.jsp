@@ -5,6 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
@@ -101,82 +109,119 @@
 			5-1. 타입 처음은 자동 실버 입력 o
 	 -->
 	insertMember Page
-	<form action="insertMember.do" method="post">
-		이메일 : <input type="hidden" name="mEmail" id="mEmail" value="">
-			<input type="text" name="e1" id="e1" value="" onchange="email()">
-			@
-			<select name="e2" id="e2" onchange="email()">
-				<option value="">직접입력
-				<option value="@naver.com">naver.com
-				<option value="@gmail.com">gmail.com
-				<option value="@nate.com">nate.com
-				<option value="@daum.net">daum.net
-			</select>
-		<input type="button" name="eCheck" id="eCheck" value="중복 확인">
-		<br>
+		<!-- 부트스크랩 적용을 받지 않기 위해 따로 위치시킴 -->
+		<!-- 이메일 데이터 입력값 --><input type="hidden" name="mEmail" id="mEmail" value=""> 
+		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
+	<form action="insertMember.do" method="post" class="form-inline"> <!-- 인라인 폼 -->
+	
+		<p> <!-- <p>태그 사용 이유 : 자연스러운 줄바꿈을 위함 -->
+			<div class="form-group">
+				<label>이메일</label>
+					<input type="text" name="e1" id="e1" value="" onchange="email()" class="form-control" placeholder="이메일 아이디 입력">
+					<label>@</label>
+					<select name="e2" id="e2" onchange="email()" class="form-control">
+						<option value="">직접입력
+						<option value="@naver.com">naver.com
+						<option value="@gmail.com">gmail.com
+						<option value="@nate.com">nate.com
+						<option value="@daum.net">daum.net
+					</select>
+				<input type="button" name="eCheck" id="eCheck" value="중복 확인" class="btn btn-default">
+			</div>
+		</p>
 		
-		비밀번호 : <input type="password" name="mPwd" id="mPwd" value="" onkeyup="pwd()">
-		<br>
-		비밀번호확인 : <input type="password" name="mPwdCheck" id="mPwdCheck" value="" onkeyup="pwd()">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>비밀번호</label>
+				<input type="password" name="mPwd" id="mPwd" value="" onkeyup="pwd()" class="form-control" placeholder="비밀번호">
+			</div>
+		</p>
+		
+		<p>
+			<div class="form-group">
+				<label>비밀번호확인</label>
+				<input type="password" name="mPwdCheck" id="mPwdCheck" value="" onkeyup="pwd()" class="form-control" placeholder="비밀번호확인">
+			</div>
+		</p>
 
 		<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
 		
-		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
+		<p>
+			<div class="form-group">
+				<label>이름</label>
+				<input type="text" name="mName" id="mName" value="" class="form-control" placeholder="이름">
+			</div>
+		</p>
 		
-		이름 : <input type="text" name="mName" id="mName" value=""><br>
+		<p>
+			<div class="form-group">
+				<label>핸드폰</label>
+				<input type="hidden" name="mPhoneF" id="mPhoneF" value=""> 
+				<select name="p1" id="p1" onchange="phone()" class="form-control">
+					<option value="">선택하세요
+					<option value="010">010
+					<option value="011">011
+					<option value="016">016
+					<option value="017">017
+					<option value="019">019
+				</select>
+				<label>-</label>
+				<input type="text" name="mPhoneS" id="mPhoneS" value="" onchange="phone()" class="form-control">
+				<label>-</label>
+				<input type="text" name="mPhoneT" id="mPhoneT" value="" onchange="phone()" class="form-control">
+			</div>
+		</p>
 		
-		핸드폰 : 
-			<input type="hidden" name="mPhoneF" id="mPhoneF" value=""> 
-			<select name="p1" id="p1" onchange="phone()">
-				<option value="">선택하세요
-				<option value="010">010
-				<option value="011">011
-				<option value="016">016
-				<option value="017">017
-				<option value="019">019
-			</select>
-			-<input type="text" name="mPhoneS" id="mPhoneS" value="" onchange="phone()">
-			-<input type="text" name="mPhoneT" id="mPhoneT" value="" onchange="phone()">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>성별</label>
+				<label class="radio-inline">
+					<input type="radio" name="mGender" value="남">남
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="mGender" value="여">여
+				</label>
+			</div>
+		</p>
 		
-		성별 : <input type="radio" name="mGender" value="남">남
-			<input type="radio" name="mGender" value="여">여
-		<br>
-		
-		생일 : <input type="hidden" name="mBirth" id="mBirth" value="">
-			<select name="b1" id="b1" onchange="birth()">
-				<c:forEach var="i" begin="1930" end="2016">
-					<option value="${i }">${i }
-				</c:forEach>
-			</select>
-			<select name="b2" id="b2" onchange="birth()">
-				<c:forEach var="i" begin="1" end="12">
-					<c:choose>
-						<c:when test="${i < 10 }">
-							<option value="0${i }">0${i }
-						</c:when>
-						<c:otherwise>
-							<option value="${i }">${i }
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</select>
-			<select name="b3" id="b3" onchange="birth()">
-				<c:forEach var="i" begin="1" end="31">
-					<c:choose>
-						<c:when test="${i < 10 }">
-							<option value="0${i }">0${i }
-						</c:when>
-						<c:otherwise>
-							<option value="${i }">${i }
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</select>
-			<br>
-		<input type="submit" value="회원가입" class="submit">
-		<input type="reset" value="취소">
+		<p>
+			<div class="form-group">
+			<label>생일</label>
+			<input type="hidden" name="mBirth" id="mBirth" value="">
+				<select name="b1" id="b1" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1930" end="2016">
+						<option value="${i }">${i }
+					</c:forEach>
+				</select>
+				<select name="b2" id="b2" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1" end="12">
+						<c:choose>
+							<c:when test="${i < 10 }">
+								<option value="0${i }">0${i }
+							</c:when>
+							<c:otherwise>
+								<option value="${i }">${i }
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</select>
+				<select name="b3" id="b3" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1" end="31">
+						<c:choose>
+							<c:when test="${i < 10 }">
+								<option value="0${i }">0${i }
+							</c:when>
+							<c:otherwise>
+								<option value="${i }">${i }
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</select>
+			</div>
+		</p>	
+			
+		<input type="submit" value="회원가입" class="submit btn btn-success"> <!-- class 두개 -->
+		<input type="reset" value="취소" class="btn btn-warning">
 	</form>
 </body>
 </html>
