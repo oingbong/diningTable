@@ -5,6 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
@@ -113,49 +121,60 @@
 				$("#tType").val(typeSelect);
 			}
 		}
-		
 </script>
 </head>
 <body>
-	<a href="/diningTable/listRestaurant.do">listRestaurant</a>&nbsp;
-	<a href="/diningTable/main.do">main</a>&nbsp;
-	<c:if test="${mType.equals('운영자') }">
-		<a href="/diningTable/listMember.do">listMember</a>&nbsp;
-		<a href="/diningTable/listCoMember.do">listCoMember</a>&nbsp;
-	</c:if>
-	<c:choose>
-		<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
-			<a href="/diningTable/member/listReservation.do">예약 정보 확인</a>&nbsp;
-			<a href="/diningTable/member/detailMember.do">change information</a>&nbsp;
-			<a href="/diningTable/logout.do">logout</a>&nbsp;
-		</c:when>
-		<c:when test="${tNo != null}"><!-- 레스토랑 회원 경우 보이는 메뉴 -->
-			<a href="/diningTable/member/listReservationCo.do">예약자 정보 확인</a>&nbsp;
-			<a href="/diningTable/member/detailCoMember.do">change informationR</a>&nbsp;
-			<a href="/diningTable/logout.do">logout</a>&nbsp;
-		</c:when>
-		<c:otherwise><!-- 로그인 하기 전 -->
-			<a href="/diningTable/login.do">login</a>&nbsp;
-			<a href="/diningTable/insertMember.do">insertMember</a>&nbsp;
-			<a href="/diningTable/insertCoMember.do">insertRestaurant</a>&nbsp;
-		</c:otherwise>
-	</c:choose>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="/diningTable/listRestaurant.do">listRestaurant</a></li>
+		<li role="presentation"><a href="/diningTable/main.do">main</a></li>
+		
+		<c:if test="${mType.equals('운영자') }">
+			<li role="presentation"><a href="/diningTable/listMember.do">listMember</a></li>
+			<li role="presentation"><a href="/diningTable/listCoMember.do">listCoMember</a></li>
+		</c:if>
+		
+		<c:choose>
+			<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
+				<li role="presentation"><a href="/diningTable/member/listReservation.do">예약 정보 확인</a></li>
+				<li role="presentation"><a href="/diningTable/member/detailMember.do">change information</a></li>
+				<li role="presentation"><a href="/diningTable/logout.do">logout</a></li>
+			</c:when>
+			
+			<c:when test="${tNo != null}"><!-- 레스토랑 회원 경우 보이는 메뉴 -->
+				<li role="presentation"><a href="/diningTable/member/listReservationCo.do">예약자 정보 확인</a></li>
+				<li role="presentation"><a href="/diningTable/member/detailCoMember.do">change informationR</a></li>
+				<li role="presentation"><a href="/diningTable/logout.do">logout</a></li>
+			</c:when>
+			<c:otherwise><!-- 로그인 하기 전 -->
+				<li role="presentation"><a href="/diningTable/login.do">login</a></li>
+				<li role="presentation"><a href="/diningTable/insertMember.do">insertMember</a></li>
+				<li role="presentation"><a href="/diningTable/insertCoMember.do">insertRestaurant</a></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
 	
 	<br><br>
 	
 	<!-- 검색을 위한 것 -->
-	<form action="listRestaurant.do" method="post">
-		지역 : <input type="hidden" name="tAddrF" id="tAddrF" value="">
-		<select name="addrSelectF" id="addrSelectF" onchange="addrSetF()"></select>
+	<form action="listRestaurant.do" method="post" class="form-inline">
+		<div class="form-group">
+			<label>지역</label>
+			<input type="hidden" name="tAddrF" id="tAddrF" value="">
+			<select name="addrSelectF" id="addrSelectF" onchange="addrSetF()" class="form-control"></select>
+		</div>
+		<div class="form-group">
+			<label>상세지역</label>
+			<input type="hidden" name="tAddrS" id="tAddrS" value="">
+			<select name="addrSelectS" id="addrSelectS" onchange="addrSetS()" class="form-control"></select>
+		</div>
+		<div class="form-group">
+			<label>레스토랑 타입</label>
+			<input type="hidden" name="tType" id="tType" value="">
+			<select name="typeSelect" id="typeSelect" onchange="typeSet()" class="form-control"></select>
+		</div>
 		
-		상세지역 : <input type="hidden" name="tAddrS" id="tAddrS" value="">
-		<select name="addrSelectS" id="addrSelectS" onchange="addrSetS()"></select>
+		<input type="submit" value="검색하기" class="btn btn-info">
 		
-		레스토랑 타입 : <input type="hidden" name="tType" id="tType" value="">
-		<select name="typeSelect" id="typeSelect" onchange="typeSet()"></select>
-		
-		<input type="submit" value="검색하기">
 	</form>
-	
 </body>
 </html>
