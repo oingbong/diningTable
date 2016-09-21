@@ -109,14 +109,13 @@
 			5-1. 타입 처음은 자동 실버 입력 o
 	 -->
 	insertMember Page
-		<!-- 부트스크랩 적용을 받지 않기 위해 따로 위치시킴 -->
-		<!-- 이메일 데이터 입력값 --><input type="hidden" name="mEmail" id="mEmail" value=""> 
 		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
 	<form action="insertMember.do" method="post" class="form-inline"> <!-- 인라인 폼 -->
 	
 		<p> <!-- <p>태그 사용 이유 : 자연스러운 줄바꿈을 위함 -->
 			<div class="form-group">
 				<label>이메일</label>
+					<input type="hidden" name="mEmail" id="mEmail" value=""> 
 					<input type="text" name="e1" id="e1" value="" onchange="email()" class="form-control" placeholder="이메일 아이디 입력">
 					<label>@</label>
 					<select name="e2" id="e2" onchange="email()" class="form-control">
@@ -220,7 +219,7 @@
 			</div>
 		</p>	
 			
-		<input type="submit" value="회원가입" class="submit btn btn-success"> <!-- class 두개 -->
+		<input type="submit" value="회원가입" class="submit btn btn-success"> <!-- class 여러개 -->
 		<input type="reset" value="취소" class="btn btn-warning">
 	</form>
 </body>

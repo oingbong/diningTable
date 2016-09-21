@@ -153,7 +153,6 @@
 		</c:choose>
 	</ul>
 	
-	<br><br>
 	
 	<!-- 검색을 위한 것 -->
 	<form action="listRestaurant.do" method="post" class="form-inline">
