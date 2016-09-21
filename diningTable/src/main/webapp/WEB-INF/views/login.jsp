@@ -5,6 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
 
@@ -32,24 +40,63 @@
 <!-- 운영자는 개인회원 창에서 로그인 해야 하며
 	운영자 : 1, 개인회원 : 2, 레스토랑 : 3 값을 준다.
  -->
-	login Page<br>
-	<input type="radio" name="loginType" value="회원" onchange="choiceType()" checked="checked">회원 로그인 &nbsp;&nbsp;
-	<input type="radio" name="loginType" value="레스토랑" onchange="choiceType()">레스토랑 로그인
-	<div id="member">
-		<form action="loginMember.do" method="post">
-			회원 이메일 : <input type="text" name="mEmail" id="mEmail" value=""><br>
-			비밀번호 : <input type="password" name="mPwd" id="mPwd" value=""><br>
-			<input type="submit" value="로그인"><br>
-			<input type="reset" value="취소"><br>
-		</form>
-	</div>
-	<div id="coMember">
-		<form action="loginCoMember.do" method="post">
-			레스토랑 이메일 : <input type="text" name="tEmail" id="tEmail" value=""><br>
-			비밀번호 : <input type="password" name="tPwd" id="tPwd" value=""><br>
-			<input type="submit" value="로그인"><br>
-			<input type="reset" value="취소"><br>
-		</form>
-	</div>
+	login Page
+	<p>
+		<div class="form-group">
+			<label class="radio-inline">
+				<input type="radio" name="loginType" value="회원" onchange="choiceType()" checked="checked">회원 로그인 
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="loginType" value="레스토랑" onchange="choiceType()">레스토랑 로그인
+			</label>
+		</div>
+		
+		<div id="member" class="form-group">
+			<form action="loginMember.do" method="post" class="form-inline">
+				<p>
+					<div class="form-group">
+						<label>회원 이메일</label>
+						<input type="text" name="mEmail" id="mEmail" value="" class="form-control" placeholder="이메일 @ 주소">
+					</div>
+				</p>
+				<p>
+					<div class="form-group">
+						<label>비밀번호</label>
+						<input type="password" name="mPwd" id="mPwd" value="" class="form-control" placeholder="비밀번호">
+					</div>
+				</p>
+				<p>
+					<div class="form-group">
+						<input type="submit" value="로그인" class="btn btn-success">
+						<input type="reset" value="취소" class="btn btn-default">
+					</div>
+				</p>
+			</form>
+		</div>
+		
+		<div id="coMember" class="form-group">
+			<form action="loginCoMember.do" method="post" class="form-inline">
+				<p>
+					<div class="form-group">
+						<label>레스토랑 이메일</label>
+						<input type="text" name="tEmail" id="tEmail" value="" class="form-control" placeholder="이메일 @ 주소">
+					</div>
+				</p>
+				<p>
+					<div class="form-group">
+						<label>비밀번호</label>
+						<input type="password" name="tPwd" id="tPwd" value="" class="form-control" placeholder="비밀번호">
+					</div>
+				</p>
+				<p>
+					<div class="form-group">
+						<input type="submit" value="로그인" class="btn btn-success">
+						<input type="reset" value="취소" class="btn btn-default">
+					</div>
+				</p>
+			</form>
+		</div>
+		
+	</p>
 </body>
 </html>
