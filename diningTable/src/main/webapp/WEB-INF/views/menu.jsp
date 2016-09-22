@@ -136,13 +136,13 @@
 		<c:choose>
 			<c:when test="${mNo != null}"><!-- 개인회원 경우 보이는 메뉴 -->
 				<li role="presentation"><a href="/diningTable/member/listReservation.do">예약 정보 확인</a></li>
-				<li role="presentation"><a href="/diningTable/member/detailMember.do">change information</a></li>
+				<li role="presentation"><a href="/diningTable/member/detailMember.do">회원 정보</a></li>
 				<li role="presentation"><a href="/diningTable/logout.do">logout</a></li>
 			</c:when>
 			
 			<c:when test="${tNo != null}"><!-- 레스토랑 회원 경우 보이는 메뉴 -->
 				<li role="presentation"><a href="/diningTable/member/listReservationCo.do">예약자 정보 확인</a></li>
-				<li role="presentation"><a href="/diningTable/member/detailCoMember.do">change informationR</a></li>
+				<li role="presentation"><a href="/diningTable/member/detailCoMember.do">레스토랑 정보</a></li>
 				<li role="presentation"><a href="/diningTable/logout.do">logout</a></li>
 			</c:when>
 			<c:otherwise><!-- 로그인 하기 전 -->

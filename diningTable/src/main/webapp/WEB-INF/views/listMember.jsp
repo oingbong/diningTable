@@ -41,7 +41,7 @@
 					<td>${m.mBirth }</td>
 				</tr>
 			</c:forEach>
-	</table>
+		</table>
 	</div>
 </body>
 </html>
