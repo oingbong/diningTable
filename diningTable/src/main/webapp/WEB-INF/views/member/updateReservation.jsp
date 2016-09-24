@@ -5,6 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -64,37 +72,62 @@
 </script>
 </head>
 <body>
-	<h2>예약 수정</h2>
+	<h2>레스토랑 예약 변경</h2>
 
-	<form action="updateReservation.do" method="post">
-		예약번호 : <input type="hidden" name="rNo" id="rNo" value="${r.rNo }">
-		${r.rNo }
-		<br>
-		
-		예약날짜 : <input type="text" name="rDate" id="rDate" value="${r.rDate }">
-		<br>
+	<form action="updateReservation.do" method="post" class="form-inline"> <!-- 인라인 폼 -->
 	
-		예약시간 : <input type="hidden" name="rTime" id="rTime" value="${r.rTime }">
-			<select name="r1" id="r1" onchange="timeSet()"></select>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>예약번호</label>
+				<input type="text" name="rNo" id="rNo" value="${r.rNo }" readonly="readonly" class="form-control">
+			</div>
+		</p>
 		
-		인원수 : <input type="text" name="rNumber" id="rNumber" value="${r.rNumber }">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>예약날짜</label>
+				<input type="text" name="rDate" id="rDate" value="${r.rDate }" class="form-control">
+			</div>
+		</p>
 		
-		요구사항 :<br>
-		<textarea name="rRequest" id="rRequest" rows="5" cols="60">${r.rRequest }</textarea>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>예약시간</label>
+				<input type="hidden" name="rTime" id="rTime" value="${r.rTime }">
+				<select name="r1" id="r1" onchange="timeSet()" class="form-control"></select>
+			</div>
+		</p>	
+
+		<p>
+			<div class="form-group">
+				<label>인원수</label>
+				<input type="text" name="rNumber" id="rNumber" value="${r.rNumber }" class="form-control">
+			</div>
+		</p>		
 		
-		회원번호 : <input type="hidden" name="mNo" id="mNo" value="${r.mNo }">
-		${r.mNo }
-		<br>
+		<p>
+			<div class="form-group">
+				<label>요구사항</label>
+				<textarea name="rRequest" id="rRequest" rows="5" cols="60" class="form-control">${r.rRequest }</textarea>
+			</div>
+		</p>		
+
+		<p>
+			<div class="form-group">
+				<label>회원번호</label>
+				<input type="text" name="mNo" id="mNo" value="${r.mNo }" readonly="readonly" class="form-control">
+			</div>
+		</p>		
 		
-		레스토랑 번호 : <input type="hidden" name="tNo" id="tNo" value="${r.tNo }">
-		${r.tNo }
-		<br>
+		<p>
+			<div class="form-group">
+				<label>레스토랑 번호</label>
+				<input type="text" name="tNo" id="tNo" value="${r.tNo }" readonly="readonly" class="form-control">
+			</div>
+		</p>
 		
-		<input type="submit" value="예약수정하기">
-		<input type="reset" value="취소하기">
+		<input type="submit" value="예약변경" class="btn btn-success">
+		<input type="reset" value="취소하기" class="btn btn-warning">
 	</form>
 </body>
 </html>

@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스크랩 적용 시작 -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 부트스크랩 적용 끝 -->
 <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -88,88 +96,131 @@
 </script>
 </head>
 <body>
-	<form action="" method="post">
-		<!-- 회원정보수정 할 때 필요한 mNo 값 주기 위한 것 -->
-		<input type="hidden" name="mNo" id="mNo" value="${m.mNo }">
+	<form action="updateMember.do" method="post" class="form-inline"> <!-- 인라인 폼 -->
+		<input type="hidden" name="mNo" id="mNo" value="${m.mNo }"> <!-- 회원 번호 데이터 입력값 -->
 		
-		<input type="hidden" name="mEmail" id="mEmail" value="${m.mEmail }">
-		이메일 : ${m.mEmail } <font color="red" size="0.5">이메일은 변경할 수 없습니다.</font> 
-		<br>
+		<p>
+			<div class="form-group">
+				<label>이메일</label>
+				<input type="text" value="${m.mEmail }" name="mEmail" id="mEmail" readonly="readonly" class="form-control">
+				<font color="red" size="0.5">이메일은 변경할 수 없습니다.</font> 
+			</div>
+		</p>
 		
-		<input type="button" name="pChange" id="pChange" value="비밀번호 변경" onclick="pwdChange()">
-		<div class="pwd" style="display: none;">
-			비밀번호 : <input type="password" name="mPwd" id="mPwd" value="${m.mPwd }" onkeyup="pwd()">
-			<br>
-			비밀번호확인 : <input type="password" name="mPwdCheck" id="mPwdCheck" onkeyup="pwd()">
-			<br>
+		<p>
+			<input type="button" name="pChange" id="pChange" value="비밀번호 변경" onclick="pwdChange()" class="btn btn-default">
 			
-			<!-- 비밀번호 일치 확인 --><div id="pwdCheck"></div>
-			
-			<input type="button" name="pCancel" id="pCancel" value="변경 취소" onclick="pwdCancel()">
-		</div>
-		<br>
+			<div class="pwd form-group" style="display: none;"> <!-- class 두개 -->
+				<p>
+					<div class="form-group">
+						<label>비밀번호</label>
+						<input type="password" name="mPwd" id="mPwd" value="${m.mPwd }" onkeyup="pwd()" class="form-control">
+					</div>
+				</p>
+				
+				<p>
+					<div class="form-group">
+						<label>비밀번호 확인</label>
+						<input type="password" name="mPwdCheck" id="mPwdCheck" onkeyup="pwd()" class="form-control">
+					</div>
+				</p>
+				
+				<!-- 비밀번호 일치 확인 -->
+				<p><div id="pwdCheck"></div></p>
+				
+				<input type="button" name="pCancel" id="pCancel" value="변경 취소" onclick="pwdCancel()" class="btn btn-default">
+			</div>
+					
+		</p>
 		
-		<input type="hidden" name="mType" id="mType" value="${m.mType }">
-		회원 타입 : ${m.mType } <font color="red" size="0.5">관리자만 변경 가능합니다.</font>
-		<br>
+		<p>
+			<div class="form-group">
+				<label>회원 타입</label>
+				<input type="text" value="${m.mType }" name="mType" id="mType" readonly="readonly" class="form-control">
+				<font color="red" size="0.5">관리자만 변경 가능합니다.</font>
+			</div>
+		</p>
 		
-		이름 : <input type="text" name="mName" id="mName" value="${m.mName }">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>이름</label>
+				<input type="text" name="mName" id="mName" value="${m.mName }" class="form-control">
+			</div>
+		</p>
+
+		<p>
+			<div class="form-group">
+				<label>핸드폰</label>
+				<input type="hidden" name="mPhoneF" id="mPhoneF" value="${m.mPhoneF }">
+				<select name="p1" id="p1" onchange="phone()" class="form-control">
+					<option value="">선택하세요
+					<option value="010">010
+					<option value="011">011
+					<option value="016">016
+					<option value="017">017
+					<option value="019">019
+				</select>
+				<label>-</label>
+				<input type="text" name="mPhoneS" id="mPhoneS" value="${m.mPhoneS }" onchange="phone()" class="form-control">
+				<label>-</label>
+				<input type="text" name="mPhoneT" id="mPhoneT" value="${m.mPhoneT }" onchange="phone()" class="form-control">
+			</div>
+		</p>		
 		
-		핸드폰 : <input type="hidden" name="mPhoneF" id="mPhoneF" value="${m.mPhoneF }">
-			<select name="p1" id="p1" onchange="phone()">
-				<option value="">선택하세요
-				<option value="010">010
-				<option value="011">011
-				<option value="016">016
-				<option value="017">017
-				<option value="019">019
-			</select>
-			-<input type="text" name="mPhoneS" id="mPhoneS" value="${m.mPhoneS }">
-			-<input type="text" name="mPhoneT" id="mPhoneT" value="${m.mPhoneT }">
-		<br>
+		<p>
+			<div class="form-group">
+				<label>성별</label>
+				<input type="hidden" name="genderSelected" id="genderSelected" value="${m.mGender }">
+				<label class="radio-inline">
+					<input type="radio" name="mGender" value="남">남
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="mGender" value="여">여
+				</label>
+			</div>
+		</p>
 		
-		<input type="hidden" name="genderSelected" id="genderSelected" value="${m.mGender }">
-		성별 : <input type="radio" name="mGender" value="남">남
-			<input type="radio" name="mGender" value="여">여
-		<br>
-		
-		생일 : <input type="hidden" name="mBirth" id="mBirth" value="${m.mBirth }">
-			<input type="hidden" name="m1" id="m1" value="${(m.mBirth).substring(0,4) }">
-			<input type="hidden" name="m2" id="m2" value="${(m.mBirth).substring(5,7) }">
-			<input type="hidden" name="m3" id="m3" value="${(m.mBirth).substring(8,10) }">
-			<select name="b1" id="b1" onchange="birth()">
-				<c:forEach var="i" begin="1930" end="2016">
-					<option value="${i }">${i }
-				</c:forEach>
-			</select>
-			<select name="b2" id="b2" onchange="birth()">
-				<c:forEach var="i" begin="1" end="12">
-					<c:choose>
-						<c:when test="${i < 10 }">
-							<option value="0${i }">0${i }
-						</c:when>
-						<c:otherwise>
-							<option value="${i }">${i }
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</select>
-			<select name="b3" id="b3" onchange="birth()">
-				<c:forEach var="i" begin="1" end="31">
-					<c:choose>
-						<c:when test="${i < 10 }">
-							<option value="0${i }">0${i }
-						</c:when>
-						<c:otherwise>
-							<option value="${i }">${i }
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</select>
-		<br>
-		<input type="submit" value="수정하기">
-		<input type="reset" value="취소하기">
+		<p>
+			<div class="form-group">
+				<label>생일</label>
+				<input type="hidden" name="mBirth" id="mBirth" value="${m.mBirth }">
+				<input type="hidden" name="m1" id="m1" value="${(m.mBirth).substring(0,4) }">
+				<input type="hidden" name="m2" id="m2" value="${(m.mBirth).substring(5,7) }">
+				<input type="hidden" name="m3" id="m3" value="${(m.mBirth).substring(8,10) }">
+				<select name="b1" id="b1" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1930" end="2016">
+						<option value="${i }">${i }
+					</c:forEach>
+				</select>
+				<select name="b2" id="b2" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1" end="12">
+						<c:choose>
+							<c:when test="${i < 10 }">
+								<option value="0${i }">0${i }
+							</c:when>
+							<c:otherwise>
+								<option value="${i }">${i }
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</select>
+				<select name="b3" id="b3" onchange="birth()" class="form-control">
+					<c:forEach var="i" begin="1" end="31">
+						<c:choose>
+							<c:when test="${i < 10 }">
+								<option value="0${i }">0${i }
+							</c:when>
+							<c:otherwise>
+								<option value="${i }">${i }
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</select>
+			</div>
+		</p>		
+
+		<input type="submit" value="수정하기" class="submit btn btn-success"> <!-- class 여러개 -->
+		<input type="reset" value="취소하기" class="btn btn-warning">
 	</form>
 </body>
 </html>
