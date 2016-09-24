@@ -40,9 +40,9 @@ public class RestaurantController {
 	
 	// 레스토랑 검색 목록
 	@RequestMapping(value="/listRestaurant.do", method=RequestMethod.POST)
-	public ModelAndView listSearch(RestaurantVo t){
+	public ModelAndView listSearch(String tAddrFsearch, String tAddrSsearch, String tTypeSearch){
 		ModelAndView view = new ModelAndView();
-		view.addObject("list", dao.listSearch(t));
+		view.addObject("list", dao.listSearch(tAddrFsearch, tAddrSsearch, tTypeSearch));
 		view.addObject("viewPage","listRestaurant.jsp");
 		view.setViewName("template");
 		return view;

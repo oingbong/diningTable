@@ -64,13 +64,13 @@
 			var addrSelectF = $("#addrSelectF option:selected").val(); // 선택값을 가져오기 위한 것
 			
 			if(addrSelectF=="지역"){
-				$("#tAddrF").val(""); // '지역'를 선택할 경우 아무것도 입력 하지 않음
+				$("#tAddrFsearch").val(""); // '지역'를 선택할 경우 아무것도 입력 하지 않음
 			}else{
-				$("#tAddrF").val(addrSelectF); // 그외는 선택값을 입력
+				$("#tAddrFsearch").val(addrSelectF); // 그외는 선택값을 입력
 			}
 			
 			// 다른지역을 선택할 경우 해야하는 두가지
-			$("#tAddrS").val(""); // 상세지역의 값을 없애주기 위한 것 
+			$("#tAddrSsearch").val(""); // 상세지역의 값을 없애주기 위한 것 
 			$("#addrSelectS *").remove();  // 상세지역의 기존 선택값을 삭제 해주기 위한 것
 			
 			// 범위 큰 지역의 선택값에 따른 상세지역의 선택값을 주기 위한 것
@@ -103,9 +103,9 @@
 			var addrSelectS = $("#addrSelectS option:selected").val();
 			
 			if(addrSelectS=="상세지역"){
-				$("#tAddrS").val(""); // '상세지역'를 선택할 경우 아무것도 입력 하지 않음
+				$("#tAddrSsearch").val(""); // '상세지역'를 선택할 경우 아무것도 입력 하지 않음
 			}else{
-				$("#tAddrS").val(addrSelectS); // 그외는 선택값을 입력
+				$("#tAddrSsearch").val(addrSelectS); // 그외는 선택값을 입력
 			}
 			
 		}
@@ -116,9 +116,9 @@
 			var typeSelect = $("#typeSelect option:selected").val();
 			
 			if(typeSelect=="레스토랑타입"){
-				$("#tType").val("");
+				$("#tTypeSearch").val("");
 			}else{
-				$("#tType").val(typeSelect);
+				$("#tTypeSearch").val(typeSelect);
 			}
 		}
 </script>
@@ -158,17 +158,17 @@
 	<form action="listRestaurant.do" method="post" class="form-inline">
 		<div class="form-group">
 			<label>지역</label>
-			<input type="hidden" name="tAddrF" id="tAddrF" value="">
+			<input type="hidden" name="tAddrFsearch" id="tAddrFsearch" value="">
 			<select name="addrSelectF" id="addrSelectF" onchange="addrSetF()" class="form-control"></select>
 		</div>
 		<div class="form-group">
 			<label>상세지역</label>
-			<input type="hidden" name="tAddrS" id="tAddrS" value="">
+			<input type="hidden" name="tAddrSsearch" id="tAddrSsearch" value="">
 			<select name="addrSelectS" id="addrSelectS" onchange="addrSetS()" class="form-control"></select>
 		</div>
 		<div class="form-group">
 			<label>레스토랑 타입</label>
-			<input type="hidden" name="tType" id="tType" value="">
+			<input type="hidden" name="tTypeSearch" id="tTypeSearch" value="">
 			<select name="typeSelect" id="typeSelect" onchange="typeSet()" class="form-control"></select>
 		</div>
 		

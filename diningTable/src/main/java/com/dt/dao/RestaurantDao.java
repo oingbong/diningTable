@@ -97,9 +97,13 @@ public class RestaurantDao {
 	}
 	
 	// 레스토랑 검색 목록
-	public List<RestaurantVo> listSearch(RestaurantVo t){
+	public List listSearch(String tAddrFsearch, String tAddrSsearch, String tTypeSearch){
 		SqlSession session = factory.openSession();
-		List<RestaurantVo> list = session.selectList("restaurant.selectSearch", t);
+		HashMap map = new HashMap();
+		map.put("tAddrFsearch", tAddrFsearch);
+		map.put("tAddrSsearch", tAddrSsearch);
+		map.put("tTypeSearch", tTypeSearch);
+		List list = session.selectList("restaurant.selectSearch", map);
 		session.close();
 		return list;
 	}

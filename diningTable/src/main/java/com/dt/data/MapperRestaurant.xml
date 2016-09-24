@@ -38,16 +38,16 @@
 		select * from restaurant where tEmail=#{tEmail} and tPwd=#{tPwd}
 	</select>
 	<!-- 레스토랑 검색 리스트 -->
-	<select id="selectSearch" resultType="restaurantVo" parameterType="restaurantVo">
+	<select id="selectSearch" resultType="restaurantVo">
  		select * from restaurant
-			<if test="tAddrF != null">
-			 where tAddrF like '%' || #{tAddrF} || '%'
+			<if test="tAddrFsearch != null">
+			 where tAddrF like '%' || #{tAddrFsearch} || '%'
 			</if>
-			<if test="tAddrS != null">
-				 and tAddrS like '%' || #{tAddrS} || '%'
+			<if test="tAddrSsearch != null">
+				 and tAddrS like '%' || #{tAddrSsearch} || '%'
 			</if>
-			<if test="tType != null">
-				 and tType like '%' || #{tType} || '%'
+			<if test="tTypeSearch != null">
+				 and tType like '%' || #{tTypeSearch} || '%'
 			</if>
 	</select>
 </mapper>
