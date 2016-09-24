@@ -183,12 +183,11 @@
 <body>
 	<form action="updateCoMember.do" method="post" enctype="multipart/form-data" class="form-inline"> <!-- 인라인 폼 -->
 		<input type="hidden" name="tNo" id="tNo" value="${t.tNo }"> <!-- 레스토랑 번호 데이터 입력값 -->
-		<input type="hidden" name="tEmail" id="tEmail" value="${t.tEmail }"> <!-- 레스토랑 이메일  데이터 입력값-->
 		
 		<p>
 			<div class="form-group">
 				<label>이메일</label>
-				<input type="text" value="${t.tEmail }" readonly="readonly" class="form-control">
+				<input type="text" value="${t.tEmail }" name="tEmail" id="tEmail" readonly="readonly" class="form-control">
 				<font color="red" size="0.5">이메일은 변경할 수 없습니다.</font>
 			</div>
 		</p>

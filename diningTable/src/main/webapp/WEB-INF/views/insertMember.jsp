@@ -109,8 +109,8 @@
 			5-1. 타입 처음은 자동 실버 입력 o
 	 -->
 	insertMember Page
-		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
 	<form action="insertMember.do" method="post" class="form-inline"> <!-- 인라인 폼 -->
+		<!-- 타입 : --> <input type="hidden" name="mType" id="mType" value="실버회원">
 	
 		<p> <!-- <p>태그 사용 이유 : 자연스러운 줄바꿈을 위함 -->
 			<div class="form-group">
